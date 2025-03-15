@@ -66,7 +66,45 @@ func parseLocalAddress(raw interface{}) string {
 	}
 	return ""
 }
-func convertToRule(winRules []WinRule) ([]Rule, error) {
+
+func getWindowsFirewallRules() ([]Rule, error) {
+	psScript := "get_windows_firewall_rules.ps1"
+	cmd := exec.Command("powershell", "-ExecutionPolicy", "Bypass", "-File", psScript)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, fmt.Errorf("error getting Windows firewall rules: %v", err)
+	}
+
+	var rules []Rule
+	rules, err = convertToRuleFromWinPowerShellJson(output, err)
+	if err != nil {
+		return nil, fmt.Errorf("error converting rules: %v", err)
+	}
+
+	return rules, nil
+}
+func convertToRuleFromWinPowerShellJson(fileContent []byte, err error) ([]Rule, error) {
+	var winRules []WinRule
+	var raw json.RawMessage
+	if err := json.Unmarshal(fileContent, &raw); err != nil {
+		return nil, fmt.Errorf("error parsing JSON file: %v", err)
+	}
+	// Check if the raw message is a single object or an array
+	if raw[0] == '{' {
+		// Single object
+		var singleRule WinRule
+		if err := json.Unmarshal(raw, &singleRule); err != nil {
+			return nil, fmt.Errorf("error parsing single WinRule: %v", err)
+		}
+		winRules = append(winRules, singleRule)
+	} else if raw[0] == '[' {
+		// Array of objects
+		if err := json.Unmarshal(raw, &winRules); err != nil {
+			return nil, fmt.Errorf("error parsing array of WinRules: %v", err)
+		}
+	} else {
+		return nil, fmt.Errorf("unexpected JSON format")
+	}
 	var rules []Rule
 	for _, winRule := range winRules {
 		rule := Rule{
@@ -87,29 +125,6 @@ func convertToRule(winRules []WinRule) ([]Rule, error) {
 
 	return rules, nil
 }
-
-func getWindowsFirewallRules() ([]Rule, error) {
-	psScript := "get_windows_firewall_rules.ps1"
-	cmd := exec.Command("powershell", "-ExecutionPolicy", "Bypass", "-File", psScript)
-	output, err := cmd.Output()
-	if err != nil {
-		return nil, fmt.Errorf("error getting Windows firewall rules: %v", err)
-	}
-
-	var winRules []WinRule
-	if err := json.Unmarshal(output, &winRules); err != nil {
-		// fmt.Println(string(output))
-		return nil, fmt.Errorf("error parsing mock JSON file: %v", err)
-	}
-
-	var rules []Rule
-	rules, err = convertToRule(winRules)
-	if err != nil {
-		return nil, fmt.Errorf("error converting rules: %v", err)
-	}
-
-	return rules, nil
-}
 func getWindowsFirewallRulesMock() ([]Rule, error) {
 	jsonFile := "get_windows_firewall_rules_mock-v3.json"
 	fileContent, err := ioutil.ReadFile(jsonFile)
@@ -117,13 +132,8 @@ func getWindowsFirewallRulesMock() ([]Rule, error) {
 		return nil, fmt.Errorf("error reading mock JSON file: %v", err)
 	}
 
-	var winRules []WinRule
-	if err := json.Unmarshal(fileContent, &winRules); err != nil {
-		return nil, fmt.Errorf("error parsing mock JSON file: %v", err)
-	}
-
 	var rules []Rule
-	rules, err = convertToRule(winRules)
+	rules, err = convertToRuleFromWinPowerShellJson(fileContent, err)
 	if err != nil {
 		return nil, fmt.Errorf("error converting rules: %v", err)
 	}
