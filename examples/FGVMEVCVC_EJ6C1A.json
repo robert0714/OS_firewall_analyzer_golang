@@ -1,0 +1,5125 @@
+{
+  "config_type" : "ZONE_BASED",
+  "device" : {
+    "@type" : "Device",
+    "name" : "FGVMEVCVC_EJ6C1A",
+    "hostname" : "FGVMEVCVC_EJ6C1A",
+    "mode" : "layer3",
+    "version" : "7.2.10,build1706",
+    "serial" : "FGVMEVCVC_EJ6C1A",
+    "domain" : "",
+    "objectsContainersHierarchy" : [ {
+      "localObjectContainer" : false,
+      "managementDevice" : "192_168_59_238",
+      "name" : "192_168_59_238",
+      "originalName" : "shared"
+    }, {
+      "localObjectContainer" : false,
+      "managementDevice" : "192_168_59_238",
+      "name" : "root",
+      "originalName" : "root"
+    }, {
+      "localObjectContainer" : true,
+      "managementDevice" : "192_168_59_238",
+      "name" : "192_168_59_238_FGVMEVCVC_EJ6C1A_root",
+      "originalName" : "root"
+    } ],
+    "properties" : {
+      "nat_mode" : "PolicyNat"
+    },
+    "is_layer2" : "0",
+    "major_version" : "7.0",
+    "local_target" : [ "FGVMEVCVC_EJ6C1A (root)", "All_FortiGate" ],
+    "secondary_cluster_name" : [ ],
+    "protected_cloud_host_ips" : [ ]
+  },
+  "device_interfaces" : {
+    "TC_Server.v190" : {
+      "name" : "TC_Server.v190",
+      "description" : "",
+      "ips" : [ "10.1.190.254/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "fortilink" : {
+      "name" : "fortilink",
+      "zone" : "fortilink",
+      "ips" : [ "10.255.1.1/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "NET35" : {
+      "name" : "NET35",
+      "zone" : "NET35",
+      "ips" : [ "172.16.35.254/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "VLAN1144" : {
+      "name" : "VLAN1144",
+      "description" : "",
+      "zone" : "DMZ-Stage",
+      "ips" : [ "172.16.144.254/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "port1" : {
+      "name" : "port1",
+      "ips" : [ "192.168.59.137/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "port2" : {
+      "name" : "port2",
+      "zone" : "WAN",
+      "ips" : [ "192.168.60.137/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    }
+  },
+  "from_to_zone" : {
+    "sdwan" : {
+      "WAN" : [ "2" ]
+    },
+    "NET35" : {
+      "DMZ-Stage" : [ "4" ]
+    },
+    "any" : {
+      "WAN" : [ "15", "16", "19", "9" ],
+      "any" : [ "13", "14", "17", "18", "6", "7", "8", "10" ]
+    },
+    "port1" : {
+      "WAN" : [ "3" ]
+    }
+  },
+  "hosts" : {
+    "ip-192.168.60.12" : {
+      "name" : "ip-192.168.60.12",
+      "comment" : "",
+      "ips" : [ "192.168.60.12/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.60.13" : {
+      "name" : "ip-192.168.60.13",
+      "comment" : "",
+      "ips" : [ "192.168.60.13/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "glogin.windows.net" : {
+      "name" : "glogin.windows.net",
+      "comment" : "",
+      "ips" : [ "20.190.166.66", "20.190.166.68", "20.190.166.132", "20.190.166.133", "40.126.38.19", "20.190.166.67", "40.126.38.22", "40.126.38.20" ],
+      "fqdn" : "login.windows.net",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "FIREWALL_AUTH_PORTAL_ADDRESS" : {
+      "name" : "FIREWALL_AUTH_PORTAL_ADDRESS",
+      "comment" : "",
+      "ips" : [ "0.0.0.0/0" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.60.10" : {
+      "name" : "ip-192.168.60.10",
+      "comment" : "",
+      "ips" : [ "192.168.60.10/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.60.11" : {
+      "name" : "ip-192.168.60.11",
+      "comment" : "",
+      "ips" : [ "192.168.60.11/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "metadata-server" : {
+      "name" : "metadata-server",
+      "comment" : "",
+      "ips" : [ "169.254.169.254/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_192.168.59.50" : {
+      "name" : "ip_192.168.59.50",
+      "comment" : "",
+      "ips" : [ "192.168.59.50/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SSLVPN_TUNNEL_ADDR1" : {
+      "name" : "SSLVPN_TUNNEL_ADDR1",
+      "comment" : "",
+      "ips" : [ "10.212.134.200-10.212.134.210" ],
+      "type" : "IP_RANGE",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_192.168.59.65" : {
+      "name" : "ip_192.168.59.65",
+      "comment" : "",
+      "ips" : [ "192.168.59.65/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.59.101" : {
+      "name" : "ip-192.168.59.101",
+      "comment" : "",
+      "ips" : [ "192.168.59.101/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gSSLVPN_TUNNEL_ADDR1" : {
+      "name" : "gSSLVPN_TUNNEL_ADDR1",
+      "comment" : "",
+      "ips" : [ "10.212.134.200-10.212.134.210" ],
+      "type" : "IP_RANGE",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "ip_192.168.59.5" : {
+      "name" : "ip_192.168.59.5",
+      "comment" : "",
+      "ips" : [ "192.168.59.5/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.60.101" : {
+      "name" : "ip-192.168.60.101",
+      "comment" : "",
+      "ips" : [ "192.168.60.101/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_192.168.60.65" : {
+      "name" : "ip_192.168.60.65",
+      "comment" : "",
+      "ips" : [ "192.168.60.65/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.59.11" : {
+      "name" : "ip-192.168.59.11",
+      "comment" : "",
+      "ips" : [ "192.168.59.11/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.59.12" : {
+      "name" : "ip-192.168.59.12",
+      "comment" : "",
+      "ips" : [ "192.168.59.12/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip-192.168.59.13" : {
+      "name" : "ip-192.168.59.13",
+      "comment" : "",
+      "ips" : [ "192.168.59.13/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "login.microsoftonline.com" : {
+      "name" : "login.microsoftonline.com",
+      "comment" : "",
+      "ips" : [ "20.190.141.37", "20.190.141.38", "20.190.141.35", "20.190.141.36", "20.190.141.32", "20.190.141.33", "20.190.141.39", "40.126.13.9" ],
+      "fqdn" : "login.microsoftonline.com",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "FABRIC_DEVICE" : {
+      "name" : "FABRIC_DEVICE",
+      "comment" : "IPv4 addresses of Fabric Devices.",
+      "ips" : [ "0.0.0.0/0" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSa1" : {
+      "name" : "TSa1",
+      "comment" : "",
+      "ips" : [ "64.87.26.147/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_172.16.144.5" : {
+      "name" : "ip_172.16.144.5",
+      "comment" : "",
+      "ips" : [ "172.16.144.5/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSa4" : {
+      "name" : "TSa4",
+      "comment" : "",
+      "ips" : [ "204.68.97.212/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSa3" : {
+      "name" : "TSa3",
+      "comment" : "",
+      "ips" : [ "192.124.129.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSa2" : {
+      "name" : "TSa2",
+      "comment" : "",
+      "ips" : [ "159.89.135.184/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "RFC1918-10" : {
+      "name" : "RFC1918-10",
+      "comment" : "",
+      "ips" : [ "10.0.0.0/8" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "AP145-10.5.10.2" : {
+      "name" : "AP145-10.5.10.2",
+      "comment" : "test",
+      "ips" : [ "10.5.10.2/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "AP145-10.5.10.1" : {
+      "name" : "AP145-10.5.10.1",
+      "comment" : "test",
+      "ips" : [ "10.5.10.1/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "AP145-10.5.10.3" : {
+      "name" : "AP145-10.5.10.3",
+      "comment" : "test",
+      "ips" : [ "10.5.10.3/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "RFC1918-172" : {
+      "name" : "RFC1918-172",
+      "comment" : "",
+      "ips" : [ "172.16.0.0/12" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb89" : {
+      "name" : "TSb89",
+      "comment" : "",
+      "ips" : [ "52.131.128.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb87" : {
+      "name" : "TSb87",
+      "comment" : "",
+      "ips" : [ "52.131.8.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb88" : {
+      "name" : "TSb88",
+      "comment" : "",
+      "ips" : [ "52.131.208.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb85" : {
+      "name" : "TSb85",
+      "comment" : "",
+      "ips" : [ "52.130.128.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb86" : {
+      "name" : "TSb86",
+      "comment" : "",
+      "ips" : [ "52.130.160.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "login.windows.net" : {
+      "name" : "login.windows.net",
+      "comment" : "",
+      "ips" : [ "20.190.166.66", "20.190.166.68", "20.190.166.132", "20.190.166.133", "40.126.38.19", "20.190.166.67", "40.126.38.22", "40.126.38.20" ],
+      "fqdn" : "login.windows.net",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb94" : {
+      "name" : "TSb94",
+      "comment" : "",
+      "ips" : [ "52.131.0.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb95" : {
+      "name" : "TSb95",
+      "comment" : "",
+      "ips" : [ "52.131.144.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb92" : {
+      "name" : "TSb92",
+      "comment" : "",
+      "ips" : [ "52.130.144.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb93" : {
+      "name" : "TSb93",
+      "comment" : "",
+      "ips" : [ "52.130.64.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb90" : {
+      "name" : "TSb90",
+      "comment" : "",
+      "ips" : [ "52.130.0.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb91" : {
+      "name" : "TSb91",
+      "comment" : "",
+      "ips" : [ "52.130.192.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb98" : {
+      "name" : "TSb98",
+      "comment" : "",
+      "ips" : [ "52.131.32.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb99" : {
+      "name" : "TSb99",
+      "comment" : "",
+      "ips" : [ "52.131.16.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb96" : {
+      "name" : "TSb96",
+      "comment" : "",
+      "ips" : [ "52.130.48.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb97" : {
+      "name" : "TSb97",
+      "comment" : "",
+      "ips" : [ "52.131.192.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb2" : {
+      "name" : "TSb2",
+      "comment" : "",
+      "ips" : [ "40.72.136.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb1" : {
+      "name" : "TSb1",
+      "comment" : "",
+      "ips" : [ "40.73.32.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gmail.com" : {
+      "name" : "gmail.com",
+      "comment" : "",
+      "ips" : [ "142.250.77.5" ],
+      "fqdn" : "gmail.com",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb9" : {
+      "name" : "TSb9",
+      "comment" : "",
+      "ips" : [ "40.73.168.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb8" : {
+      "name" : "TSb8",
+      "comment" : "",
+      "ips" : [ "40.73.148.0/25" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb7" : {
+      "name" : "TSb7",
+      "comment" : "",
+      "ips" : [ "40.73.64.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb6" : {
+      "name" : "TSb6",
+      "comment" : "",
+      "ips" : [ "40.72.144.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb5" : {
+      "name" : "TSb5",
+      "comment" : "",
+      "ips" : [ "40.73.224.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb4" : {
+      "name" : "TSb4",
+      "comment" : "",
+      "ips" : [ "40.72.160.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb3" : {
+      "name" : "TSb3",
+      "comment" : "",
+      "ips" : [ "40.73.147.0/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb69" : {
+      "name" : "TSb69",
+      "comment" : "",
+      "ips" : [ "42.159.216.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb67" : {
+      "name" : "TSb67",
+      "comment" : "",
+      "ips" : [ "42.159.36.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb68" : {
+      "name" : "TSb68",
+      "comment" : "",
+      "ips" : [ "42.159.8.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb65" : {
+      "name" : "TSb65",
+      "comment" : "",
+      "ips" : [ "42.159.130.144/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb66" : {
+      "name" : "TSb66",
+      "comment" : "",
+      "ips" : [ "42.159.210.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb63" : {
+      "name" : "TSb63",
+      "comment" : "",
+      "ips" : [ "42.159.161.192/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb64" : {
+      "name" : "TSb64",
+      "comment" : "",
+      "ips" : [ "42.159.64.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "none" : {
+      "name" : "none",
+      "comment" : "",
+      "ips" : [ "0.0.0.0/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb72" : {
+      "name" : "TSb72",
+      "comment" : "",
+      "ips" : [ "42.159.129.48/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb73" : {
+      "name" : "TSb73",
+      "comment" : "",
+      "ips" : [ "42.159.141.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb70" : {
+      "name" : "TSb70",
+      "comment" : "",
+      "ips" : [ "42.159.208.0/25" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb71" : {
+      "name" : "TSb71",
+      "comment" : "",
+      "ips" : [ "42.159.184.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gmetadata-server" : {
+      "name" : "gmetadata-server",
+      "comment" : "",
+      "ips" : [ "169.254.169.254/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "TSb78" : {
+      "name" : "TSb78",
+      "comment" : "",
+      "ips" : [ "42.159.136.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb79" : {
+      "name" : "TSb79",
+      "comment" : "",
+      "ips" : [ "42.159.129.96/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb76" : {
+      "name" : "TSb76",
+      "comment" : "",
+      "ips" : [ "42.159.0.128/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb77" : {
+      "name" : "TSb77",
+      "comment" : "",
+      "ips" : [ "42.159.63.240/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb74" : {
+      "name" : "TSb74",
+      "comment" : "",
+      "ips" : [ "42.159.180.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb75" : {
+      "name" : "TSb75",
+      "comment" : "",
+      "ips" : [ "42.159.24.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb83" : {
+      "name" : "TSb83",
+      "comment" : "",
+      "ips" : [ "42.159.142.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb84" : {
+      "name" : "TSb84",
+      "comment" : "",
+      "ips" : [ "42.159.130.32/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb81" : {
+      "name" : "TSb81",
+      "comment" : "",
+      "ips" : [ "42.159.128.72/29" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb82" : {
+      "name" : "TSb82",
+      "comment" : "",
+      "ips" : [ "42.159.132.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb80" : {
+      "name" : "TSb80",
+      "comment" : "",
+      "ips" : [ "42.159.140.0/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb107" : {
+      "name" : "TSb107",
+      "comment" : "",
+      "ips" : [ "139.217.0.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb47" : {
+      "name" : "TSb47",
+      "comment" : "",
+      "ips" : [ "42.159.0.160/29" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb106" : {
+      "name" : "TSb106",
+      "comment" : "",
+      "ips" : [ "103.9.10.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb48" : {
+      "name" : "TSb48",
+      "comment" : "",
+      "ips" : [ "42.159.17.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb109" : {
+      "name" : "TSb109",
+      "comment" : "",
+      "ips" : [ "139.219.155.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb45" : {
+      "name" : "TSb45",
+      "comment" : "",
+      "ips" : [ "42.159.192.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb108" : {
+      "name" : "TSb108",
+      "comment" : "",
+      "ips" : [ "139.217.32.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb46" : {
+      "name" : "TSb46",
+      "comment" : "",
+      "ips" : [ "42.159.0.192/29" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb103" : {
+      "name" : "TSb103",
+      "comment" : "",
+      "ips" : [ "52.130.140.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb43" : {
+      "name" : "TSb43",
+      "comment" : "",
+      "ips" : [ "42.159.176.0/25" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb102" : {
+      "name" : "TSb102",
+      "comment" : "",
+      "ips" : [ "52.131.64.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb44" : {
+      "name" : "TSb44",
+      "comment" : "",
+      "ips" : [ "42.159.18.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb105" : {
+      "name" : "TSb105",
+      "comment" : "",
+      "ips" : [ "64.87.3.133/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb41" : {
+      "name" : "TSb41",
+      "comment" : "",
+      "ips" : [ "40.72.208.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb104" : {
+      "name" : "TSb104",
+      "comment" : "",
+      "ips" : [ "52.130.32.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb42" : {
+      "name" : "TSb42",
+      "comment" : "",
+      "ips" : [ "40.72.224.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb49" : {
+      "name" : "TSb49",
+      "comment" : "",
+      "ips" : [ "42.159.144.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb50" : {
+      "name" : "TSb50",
+      "comment" : "",
+      "ips" : [ "42.159.212.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb51" : {
+      "name" : "TSb51",
+      "comment" : "",
+      "ips" : [ "42.159.191.240/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb101" : {
+      "name" : "TSb101",
+      "comment" : "",
+      "ips" : [ "52.131.224.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb100" : {
+      "name" : "TSb100",
+      "comment" : "",
+      "ips" : [ "52.130.40.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb118" : {
+      "name" : "TSb118",
+      "comment" : "",
+      "ips" : [ "139.217.168.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb58" : {
+      "name" : "TSb58",
+      "comment" : "",
+      "ips" : [ "42.159.130.48/29" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb117" : {
+      "name" : "TSb117",
+      "comment" : "",
+      "ips" : [ "139.217.48.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb59" : {
+      "name" : "TSb59",
+      "comment" : "",
+      "ips" : [ "42.159.224.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb56" : {
+      "name" : "TSb56",
+      "comment" : "",
+      "ips" : [ "42.159.20.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb119" : {
+      "name" : "TSb119",
+      "comment" : "",
+      "ips" : [ "139.217.192.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb57" : {
+      "name" : "TSb57",
+      "comment" : "",
+      "ips" : [ "42.159.4.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb114" : {
+      "name" : "TSb114",
+      "comment" : "",
+      "ips" : [ "139.219.0.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb54" : {
+      "name" : "TSb54",
+      "comment" : "",
+      "ips" : [ "42.159.164.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb113" : {
+      "name" : "TSb113",
+      "comment" : "",
+      "ips" : [ "139.217.208.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb55" : {
+      "name" : "TSb55",
+      "comment" : "",
+      "ips" : [ "42.159.130.0/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb116" : {
+      "name" : "TSb116",
+      "comment" : "",
+      "ips" : [ "139.217.40.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb52" : {
+      "name" : "TSb52",
+      "comment" : "",
+      "ips" : [ "42.159.0.0/25" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb115" : {
+      "name" : "TSb115",
+      "comment" : "",
+      "ips" : [ "139.219.24.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb53" : {
+      "name" : "TSb53",
+      "comment" : "",
+      "ips" : [ "42.159.33.192/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "glogin.microsoftonline.com" : {
+      "name" : "glogin.microsoftonline.com",
+      "comment" : "",
+      "ips" : [ "20.190.141.37", "20.190.141.38", "20.190.141.35", "20.190.141.36", "20.190.141.32", "20.190.141.33", "20.190.141.39", "40.126.13.9" ],
+      "fqdn" : "login.microsoftonline.com",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gFIREWALL_AUTH_PORTAL_ADDRESS" : {
+      "name" : "gFIREWALL_AUTH_PORTAL_ADDRESS",
+      "comment" : "",
+      "ips" : [ "0.0.0.0/0" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "RFC1918-192" : {
+      "name" : "RFC1918-192",
+      "comment" : "",
+      "ips" : [ "192.168.0.0/16" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb110" : {
+      "name" : "TSb110",
+      "comment" : "",
+      "ips" : [ "139.217.224.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb61" : {
+      "name" : "TSb61",
+      "comment" : "",
+      "ips" : [ "42.159.16.0/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb62" : {
+      "name" : "TSb62",
+      "comment" : "",
+      "ips" : [ "42.159.35.128/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb112" : {
+      "name" : "TSb112",
+      "comment" : "",
+      "ips" : [ "139.219.16.0/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb111" : {
+      "name" : "TSb111",
+      "comment" : "",
+      "ips" : [ "139.217.160.0/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb60" : {
+      "name" : "TSb60",
+      "comment" : "",
+      "ips" : [ "42.159.48.0/25" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "glogin.microsoft.com" : {
+      "name" : "glogin.microsoft.com",
+      "comment" : "",
+      "ips" : [ "20.190.166.131", "40.126.38.20", "20.190.166.67", "20.190.166.66", "20.190.166.132", "40.126.38.21", "40.126.38.19", "40.126.38.22" ],
+      "fqdn" : "login.microsoft.com",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "TSb129" : {
+      "name" : "TSb129",
+      "comment" : "",
+      "ips" : [ "139.219.192.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb25" : {
+      "name" : "TSb25",
+      "comment" : "",
+      "ips" : [ "40.73.162.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb128" : {
+      "name" : "TSb128",
+      "comment" : "",
+      "ips" : [ "139.217.216.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb26" : {
+      "name" : "TSb26",
+      "comment" : "",
+      "ips" : [ "40.126.96.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb23" : {
+      "name" : "TSb23",
+      "comment" : "",
+      "ips" : [ "40.73.146.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb24" : {
+      "name" : "TSb24",
+      "comment" : "",
+      "ips" : [ "40.73.60.0/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb125" : {
+      "name" : "TSb125",
+      "comment" : "",
+      "ips" : [ "139.219.145.0/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb21" : {
+      "name" : "TSb21",
+      "comment" : "",
+      "ips" : [ "40.73.61.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb124" : {
+      "name" : "TSb124",
+      "comment" : "",
+      "ips" : [ "139.217.33.0/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb22" : {
+      "name" : "TSb22",
+      "comment" : "",
+      "ips" : [ "40.125.128.0/17" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb127" : {
+      "name" : "TSb127",
+      "comment" : "",
+      "ips" : [ "139.217.162.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb126" : {
+      "name" : "TSb126",
+      "comment" : "",
+      "ips" : [ "139.217.160.128/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb20" : {
+      "name" : "TSb20",
+      "comment" : "",
+      "ips" : [ "40.73.0.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb29" : {
+      "name" : "TSb29",
+      "comment" : "",
+      "ips" : [ "40.72.192.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb27" : {
+      "name" : "TSb27",
+      "comment" : "",
+      "ips" : [ "40.73.144.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb28" : {
+      "name" : "TSb28",
+      "comment" : "",
+      "ips" : [ "40.126.88.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb121" : {
+      "name" : "TSb121",
+      "comment" : "",
+      "ips" : [ "139.217.176.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb120" : {
+      "name" : "TSb120",
+      "comment" : "",
+      "ips" : [ "139.217.64.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb123" : {
+      "name" : "TSb123",
+      "comment" : "",
+      "ips" : [ "139.219.144.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb122" : {
+      "name" : "TSb122",
+      "comment" : "",
+      "ips" : [ "139.219.148.0/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb36" : {
+      "name" : "TSb36",
+      "comment" : "",
+      "ips" : [ "40.72.128.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "all" : {
+      "name" : "all",
+      "comment" : "",
+      "ips" : [ "0.0.0.0/0" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb139" : {
+      "name" : "TSb139",
+      "comment" : "",
+      "ips" : [ "139.217.128.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb37" : {
+      "name" : "TSb37",
+      "comment" : "",
+      "ips" : [ "40.73.56.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_192.168.59.16" : {
+      "name" : "ip_192.168.59.16",
+      "comment" : "",
+      "ips" : [ "192.168.59.16/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb34" : {
+      "name" : "TSb34",
+      "comment" : "",
+      "ips" : [ "40.72.64.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb35" : {
+      "name" : "TSb35",
+      "comment" : "",
+      "ips" : [ "40.72.127.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb136" : {
+      "name" : "TSb136",
+      "comment" : "",
+      "ips" : [ "139.219.160.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb32" : {
+      "name" : "TSb32",
+      "comment" : "",
+      "ips" : [ "40.73.62.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb135" : {
+      "name" : "TSb135",
+      "comment" : "",
+      "ips" : [ "139.219.20.0/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb33" : {
+      "name" : "TSb33",
+      "comment" : "",
+      "ips" : [ "40.72.96.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb138" : {
+      "name" : "TSb138",
+      "comment" : "",
+      "ips" : [ "139.219.32.0/19" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb30" : {
+      "name" : "TSb30",
+      "comment" : "",
+      "ips" : [ "40.72.80.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb137" : {
+      "name" : "TSb137",
+      "comment" : "",
+      "ips" : [ "139.219.147.0/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb31" : {
+      "name" : "TSb31",
+      "comment" : "",
+      "ips" : [ "40.72.70.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "192.168.60.5" : {
+      "name" : "192.168.60.5",
+      "comment" : "",
+      "ips" : [ "192.168.60.5/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_192.168.59.10" : {
+      "name" : "ip_192.168.59.10",
+      "comment" : "",
+      "ips" : [ "192.168.59.10/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gFABRIC_DEVICE" : {
+      "name" : "gFABRIC_DEVICE",
+      "comment" : "IPv4 addresses of Fabric Devices.",
+      "ips" : [ "0.0.0.0/0" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "TSb38" : {
+      "name" : "TSb38",
+      "comment" : "",
+      "ips" : [ "40.73.136.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_192.168.59.15" : {
+      "name" : "ip_192.168.59.15",
+      "comment" : "",
+      "ips" : [ "192.168.59.15/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb39" : {
+      "name" : "TSb39",
+      "comment" : "",
+      "ips" : [ "40.72.0.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb132" : {
+      "name" : "TSb132",
+      "comment" : "",
+      "ips" : [ "139.219.156.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb131" : {
+      "name" : "TSb131",
+      "comment" : "",
+      "ips" : [ "139.219.17.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb40" : {
+      "name" : "TSb40",
+      "comment" : "",
+      "ips" : [ "40.73.152.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb134" : {
+      "name" : "TSb134",
+      "comment" : "",
+      "ips" : [ "139.219.128.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb133" : {
+      "name" : "TSb133",
+      "comment" : "",
+      "ips" : [ "139.217.161.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb130" : {
+      "name" : "TSb130",
+      "comment" : "",
+      "ips" : [ "139.219.64.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gnone" : {
+      "name" : "gnone",
+      "comment" : "",
+      "ips" : [ "0.0.0.0/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "ip_192.168.60.16" : {
+      "name" : "ip_192.168.60.16",
+      "comment" : "",
+      "ips" : [ "192.168.60.16/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_192.168.60.15" : {
+      "name" : "ip_192.168.60.15",
+      "comment" : "",
+      "ips" : [ "192.168.60.15/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb147" : {
+      "name" : "TSb147",
+      "comment" : "",
+      "ips" : [ "159.27.166.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb146" : {
+      "name" : "TSb146",
+      "comment" : "",
+      "ips" : [ "159.27.144.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb149" : {
+      "name" : "TSb149",
+      "comment" : "",
+      "ips" : [ "159.27.162.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb148" : {
+      "name" : "TSb148",
+      "comment" : "",
+      "ips" : [ "159.27.184.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ggmail.com" : {
+      "name" : "ggmail.com",
+      "comment" : "",
+      "ips" : [ "142.250.77.5" ],
+      "fqdn" : "gmail.com",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "login.microsoft.com" : {
+      "name" : "login.microsoft.com",
+      "comment" : "",
+      "ips" : [ "20.190.166.131", "40.126.38.20", "20.190.166.67", "20.190.166.66", "20.190.166.132", "40.126.38.21", "40.126.38.19", "40.126.38.22" ],
+      "fqdn" : "login.microsoft.com",
+      "type" : "DOMAIN",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb143" : {
+      "name" : "TSb143",
+      "comment" : "",
+      "ips" : [ "159.27.132.176/30" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb142" : {
+      "name" : "TSb142",
+      "comment" : "",
+      "ips" : [ "143.64.0.0/17" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb145" : {
+      "name" : "TSb145",
+      "comment" : "",
+      "ips" : [ "159.27.192.0/18" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb144" : {
+      "name" : "TSb144",
+      "comment" : "",
+      "ips" : [ "159.27.128.84/31" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb141" : {
+      "name" : "TSb141",
+      "comment" : "",
+      "ips" : [ "139.219.146.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb140" : {
+      "name" : "TSb140",
+      "comment" : "",
+      "ips" : [ "139.217.160.64/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb14" : {
+      "name" : "TSb14",
+      "comment" : "",
+      "ips" : [ "40.73.176.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb15" : {
+      "name" : "TSb15",
+      "comment" : "",
+      "ips" : [ "40.72.68.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb12" : {
+      "name" : "TSb12",
+      "comment" : "",
+      "ips" : [ "40.72.112.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb13" : {
+      "name" : "TSb13",
+      "comment" : "",
+      "ips" : [ "40.72.196.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb10" : {
+      "name" : "TSb10",
+      "comment" : "",
+      "ips" : [ "40.126.64.0/20" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb158" : {
+      "name" : "TSb158",
+      "comment" : "",
+      "ips" : [ "159.27.164.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb11" : {
+      "name" : "TSb11",
+      "comment" : "",
+      "ips" : [ "40.72.72.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb157" : {
+      "name" : "TSb157",
+      "comment" : "",
+      "ips" : [ "159.27.128.0/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb159" : {
+      "name" : "TSb159",
+      "comment" : "",
+      "ips" : [ "163.228.0.0/16" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gall" : {
+      "name" : "gall",
+      "comment" : "",
+      "ips" : [ "0.0.0.0/0" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "TSb18" : {
+      "name" : "TSb18",
+      "comment" : "",
+      "ips" : [ "40.73.48.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb19" : {
+      "name" : "TSb19",
+      "comment" : "",
+      "ips" : [ "40.73.148.128/26" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb16" : {
+      "name" : "TSb16",
+      "comment" : "",
+      "ips" : [ "40.72.198.0/24" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb17" : {
+      "name" : "TSb17",
+      "comment" : "",
+      "ips" : [ "40.72.200.0/21" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ip_172.16.35.5" : {
+      "name" : "ip_172.16.35.5",
+      "comment" : "",
+      "ips" : [ "172.16.35.5/32" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb154" : {
+      "name" : "TSb154",
+      "comment" : "",
+      "ips" : [ "159.27.132.128/27" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb153" : {
+      "name" : "TSb153",
+      "comment" : "",
+      "ips" : [ "159.27.168.0/22" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb156" : {
+      "name" : "TSb156",
+      "comment" : "",
+      "ips" : [ "159.27.160.0/23" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb155" : {
+      "name" : "TSb155",
+      "comment" : "",
+      "ips" : [ "159.27.0.0/17" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb150" : {
+      "name" : "TSb150",
+      "comment" : "",
+      "ips" : [ "159.27.128.64/28" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb152" : {
+      "name" : "TSb152",
+      "comment" : "",
+      "ips" : [ "159.27.132.0/25" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TSb151" : {
+      "name" : "TSb151",
+      "comment" : "",
+      "ips" : [ "159.27.128.80/30" ],
+      "type" : "SUBNET",
+      "is_negate" : false,
+      "object_container" : "root",
+      "additional_properties" : { }
+    }
+  },
+  "hosts_groups" : {
+    "Group1" : {
+      "name" : "Group1",
+      "members" : [ "TSa1", "TSa2", "TSa3", "TSa4", "TSb1", "TSb10", "TSb100", "TSb101", "TSb102", "TSb103", "TSb104", "TSb105", "TSb106", "TSb107", "TSb108", "TSb109", "TSb11", "TSb110", "TSb111", "TSb112", "TSb113", "TSb114", "TSb115", "TSb116", "TSb117", "TSb118", "TSb119", "TSb12", "TSb120", "TSb121", "TSb122", "TSb123", "TSb124", "TSb125", "TSb126", "TSb127", "TSb128", "TSb129", "TSb13", "TSb130", "TSb131", "TSb132", "TSb133", "TSb134", "TSb135", "TSb136", "TSb137", "TSb138", "TSb139", "TSb14", "TSb140", "TSb141", "TSb142", "TSb143", "TSb144", "TSb145", "TSb146", "TSb147", "TSb148", "TSb149", "TSb15", "TSb150", "TSb151", "TSb152", "TSb153", "TSb154", "TSb155", "TSb156", "TSb157", "TSb158", "TSb159", "TSb16", "TSb17", "TSb18", "TSb19", "TSb2", "TSb20", "TSb21", "TSb22", "TSb23", "TSb24", "TSb25", "TSb26", "TSb27", "TSb28", "TSb29", "TSb3", "TSb30", "TSb31", "TSb32", "TSb33", "TSb34", "TSb35", "TSb36", "TSb37", "TSb38", "TSb39", "TSb4", "TSb40", "TSb41", "TSb42", "TSb43", "TSb44", "TSb45", "TSb46", "TSb47", "TSb48", "TSb49", "TSb5", "TSb50", "TSb51", "TSb52", "TSb53", "TSb54", "TSb55", "TSb56", "TSb57", "TSb58", "TSb59", "TSb6", "TSb60", "TSb61", "TSb62", "TSb63", "TSb64", "TSb65", "TSb66", "TSb67", "TSb68", "TSb69", "TSb7", "TSb70", "TSb71", "TSb72", "TSb73", "TSb74", "TSb75", "TSb76", "TSb77", "TSb78", "TSb79", "TSb8", "TSb80", "TSb81", "TSb82", "TSb83", "TSb84", "TSb85", "TSb86", "TSb87", "TSb88", "TSb89", "TSb9", "TSb90", "TSb91", "TSb92", "TSb93", "TSb94", "TSb95", "TSb96", "TSb97", "TSb98", "TSb99", "192.168.60.5", "ip-192.168.60.10" ],
+      "object_container" : "root",
+      "is_negate" : false,
+      "additional_properties" : { }
+    },
+    "G Suite" : {
+      "name" : "G Suite",
+      "members" : [ "gmail.com", "wildcard.google.com" ],
+      "type" : "DYNAMIC",
+      "object_container" : "root",
+      "is_negate" : false,
+      "additional_properties" : { }
+    },
+    "RFC1918-GRP" : {
+      "name" : "RFC1918-GRP",
+      "members" : [ "RFC1918-10", "RFC1918-172", "RFC1918-192" ],
+      "object_container" : "root",
+      "is_negate" : false,
+      "additional_properties" : { }
+    },
+    "G-INF-NTP-L5" : {
+      "name" : "G-INF-NTP-L5",
+      "members" : [ "AP145-10.5.10.2", "AP145-10.5.10.3", "AP145-10.5.10.1" ],
+      "object_container" : "root",
+      "is_negate" : false,
+      "additional_properties" : { }
+    },
+    "Microsoft Office 365" : {
+      "name" : "Microsoft Office 365",
+      "members" : [ "login.microsoftonline.com", "login.microsoft.com", "login.windows.net" ],
+      "type" : "DYNAMIC",
+      "object_container" : "root",
+      "is_negate" : false,
+      "additional_properties" : { }
+    },
+    "gMicrosoft Office 365" : {
+      "name" : "gMicrosoft Office 365",
+      "members" : [ "glogin.microsoftonline.com", "glogin.microsoft.com", "glogin.windows.net" ],
+      "type" : "DYNAMIC",
+      "object_container" : "shared",
+      "is_negate" : false,
+      "additional_properties" : { }
+    },
+    "gG Suite" : {
+      "name" : "gG Suite",
+      "members" : [ "ggmail.com", "gwildcard.google.com" ],
+      "type" : "DYNAMIC",
+      "object_container" : "shared",
+      "is_negate" : false,
+      "additional_properties" : { }
+    }
+  },
+  "interfaces" : {
+    "TC_Server.v190" : {
+      "name" : "TC_Server.v190",
+      "description" : "",
+      "ips" : [ "10.1.190.254/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "fortilink" : {
+      "name" : "fortilink",
+      "zone" : "fortilink",
+      "ips" : [ "10.255.1.1/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "NET35" : {
+      "name" : "NET35",
+      "zone" : "NET35",
+      "ips" : [ "172.16.35.254/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "VLAN1144" : {
+      "name" : "VLAN1144",
+      "description" : "",
+      "zone" : "DMZ-Stage",
+      "ips" : [ "172.16.144.254/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "port1" : {
+      "name" : "port1",
+      "ips" : [ "192.168.59.137/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    },
+    "port2" : {
+      "name" : "port2",
+      "zone" : "WAN",
+      "ips" : [ "192.168.60.137/24" ],
+      "vips" : [ ],
+      "enable" : "enabled",
+      "secondary_ips" : [ ],
+      "rules_groups" : [ ],
+      "manage_services" : [ ],
+      "manage_ips" : [ ]
+    }
+  },
+  "nat_objects" : { },
+  "nat_objects_groups" : { },
+  "nat_pools" : { },
+  "nat_rules" : { },
+  "other_vdoms_policies" : { },
+  "policies" : {
+    "13" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #214 20240912001",
+      "device_rule_num" : 0,
+      "dst" : [ "ip_192.168.60.15" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 10,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "",
+      "rule_grp" : "middle",
+      "rule_id" : "13",
+      "rule_name" : "13",
+      "rule_num" : 10,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip_192.168.59.15" ],
+      "src_negate" : "1",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "14" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #220 20240918001",
+      "device_rule_num" : 0,
+      "dst" : [ "ip_192.168.60.16" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 11,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "",
+      "rule_grp" : "middle",
+      "rule_id" : "14",
+      "rule_name" : "14",
+      "rule_num" : 11,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip_192.168.59.16" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "15" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #6",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.12" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "WAN" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 8,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "",
+      "rule_grp" : "middle",
+      "rule_id" : "15",
+      "rule_name" : "15",
+      "rule_num" : 8,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP", "tcp_9090" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip-192.168.59.12" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "16" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #8",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.13", "ip_192.168.60.15" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "WAN" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "expiring" : {
+        "name" : "20240801001",
+        "day_start" : {
+          "date" : "01Aug2024",
+          "time" : "1343"
+        },
+        "day_end" : {
+          "date" : "01Oct2024",
+          "time" : "1343"
+        },
+        "additional_properties" : {
+          "end_date" : "01/Oct/2024 , 13:43",
+          "start_date" : "01/Aug/2024 , 13:43"
+        }
+      },
+      "global_nat" : "disabled",
+      "line_number" : 9,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "",
+      "rule_grp" : "middle",
+      "rule_id" : "16",
+      "rule_name" : "16",
+      "rule_num" : 9,
+      "schedule" : "20240801001",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "tcp-9443", "tcp_9090" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip-192.168.59.13" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "17" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #236 20241114001",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.11" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 12,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "",
+      "rule_grp" : "middle",
+      "rule_id" : "17",
+      "rule_name" : "17",
+      "rule_num" : 12,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP", "tcp_9090" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip-192.168.59.11" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "18" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #239 20241115001",
+      "device_rule_num" : 0,
+      "dst" : [ "G-INF-NTP-L5" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 13,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "",
+      "rule_grp" : "middle",
+      "rule_id" : "18",
+      "rule_name" : "18",
+      "rule_num" : 13,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip_192.168.59.65" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "19" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #8",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.101" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "WAN" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 14,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "",
+      "rule_grp" : "middle",
+      "rule_id" : "19",
+      "rule_name" : "19",
+      "rule_num" : 14,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip-192.168.59.101" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "2" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "test",
+      "device_rule_num" : 0,
+      "dst" : [ "Group1" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "WAN" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 1,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "test3",
+      "rule_grp" : "middle",
+      "rule_id" : "2",
+      "rule_name" : "2",
+      "rule_num" : 1,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "HTTP", "HTTPS" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "TSb106" ],
+      "src_negate" : "0",
+      "src_zone" : [ "sdwan" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "3" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log All Sessions"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #138",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.11" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "WAN" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 2,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "test5",
+      "rule_grp" : "middle",
+      "rule_id" : "3",
+      "rule_name" : "3",
+      "rule_num" : 2,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip-192.168.59.11" ],
+      "src_negate" : "0",
+      "src_zone" : [ "port1" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "4" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #164 IT20240221001",
+      "device_rule_num" : 0,
+      "dst" : [ "ip_172.16.144.5" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "DMZ-Stage" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 4,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "IT20240221001-1",
+      "rule_grp" : "middle",
+      "rule_id" : "4",
+      "rule_name" : "4",
+      "rule_num" : 4,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip_172.16.35.5" ],
+      "src_negate" : "0",
+      "src_zone" : [ "NET35" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "6" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #169 1234",
+      "device_rule_num" : 0,
+      "dst" : [ "192.168.60.5" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 5,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "1234-2",
+      "rule_grp" : "middle",
+      "rule_id" : "6",
+      "rule_name" : "6",
+      "rule_num" : 5,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip_192.168.59.50" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "7" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #173 20240315001",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.10" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 6,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "20240315001-1",
+      "rule_grp" : "middle",
+      "rule_id" : "7",
+      "rule_name" : "7",
+      "rule_num" : 6,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip_192.168.59.10" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "8" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #179 1234",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.11" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 3,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "1234-12",
+      "rule_grp" : "middle",
+      "rule_id" : "8",
+      "rule_name" : "8",
+      "rule_num" : 3,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "tcp_9090" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip_192.168.59.50" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "9" : {
+      "action" : "accept",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log Security Events"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "FireFlow #9",
+      "device_rule_num" : 0,
+      "dst" : [ "ip-192.168.60.11" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "WAN" ],
+      "enable" : "enabled",
+      "expandedAction" : "pass",
+      "global_nat" : "disabled",
+      "line_number" : 7,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "test123123123",
+      "rule_grp" : "middle",
+      "rule_id" : "9",
+      "rule_name" : "9",
+      "rule_num" : 7,
+      "schedule" : "always",
+      "security-profiles" : {
+        "profile-protocol-options" : [ "default" ],
+        "webfilter-profile" : [ ],
+        "ssl-ssh-profile" : [ "no-inspection" ]
+      },
+      "service" : [ "RDP" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "ip-192.168.59.11" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "FGVMEVCVC_EJ6C1A (root)" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    },
+    "10" : {
+      "action" : "deny",
+      "additional_properties" : {
+        "Policy" : "FGVMEVCVC_EJ6C1A",
+        "Scope" : "MAIN",
+        "Users" : [ ],
+        "User_Groups" : [ ],
+        "RuleLog" : "Log All Sessions"
+      },
+      "application" : [ ],
+      "bi-directional" : "0",
+      "comments" : "",
+      "device_rule_num" : 0,
+      "dst" : [ "all" ],
+      "dst_nat" : [ ],
+      "dst_negate" : "0",
+      "dst_zone" : [ "any" ],
+      "enable" : "enabled",
+      "expandedAction" : "drop",
+      "global_nat" : "disabled",
+      "line_number" : 15,
+      "load_balancer_rule" : false,
+      "log" : 1,
+      "map_source_to_interface" : false,
+      "map_source_to_same_address" : false,
+      "nat" : "disabled",
+      "object_nat_destination" : false,
+      "object_nat_source" : false,
+      "rule_display_name" : "deny",
+      "rule_grp" : "middle",
+      "rule_id" : "10",
+      "rule_name" : "10",
+      "rule_num" : 15,
+      "schedule" : "always",
+      "security-profiles" : {
+        "webfilter-profile" : [ ]
+      },
+      "service" : [ "ALL" ],
+      "service_nat" : [ ],
+      "service_negate" : "0",
+      "src" : [ "all" ],
+      "src_negate" : "0",
+      "src_zone" : [ "any" ],
+      "target" : [ "any" ],
+      "urls" : [ ],
+      "use_nat_pools" : false,
+      "users" : [ "any" ],
+      "vlans" : [ ]
+    }
+  },
+  "routes" : {
+    "1" : {
+      "id" : 1,
+      "route" : "0.0.0.0",
+      "gateway" : "192.168.59.1",
+      "bgpOverMpls" : false,
+      "route_mask" : "0.0.0.0",
+      "interface_name" : "port1",
+      "interface" : "port1"
+    }
+  },
+  "rules_groups" : {
+    "middle" : {
+      "id" : "middle",
+      "name" : "Main",
+      "rule_display_name" : "Main",
+      "enable" : "enabled",
+      "additional_properties" : { }
+    },
+    "before" : {
+      "id" : "before",
+      "name" : "Header",
+      "rule_display_name" : "Header",
+      "enable" : "enabled",
+      "additional_properties" : { }
+    },
+    "after" : {
+      "id" : "after",
+      "name" : "Footer",
+      "rule_display_name" : "Footer",
+      "enable" : "enabled",
+      "additional_properties" : { }
+    }
+  },
+  "schedules" : {
+    "20240801001" : {
+      "name" : "20240801001",
+      "day_start" : {
+        "date" : "01Aug2024",
+        "time" : "1343"
+      },
+      "day_end" : {
+        "date" : "01Oct2024",
+        "time" : "1343"
+      },
+      "additional_properties" : {
+        "end_date" : "01/Oct/2024 , 13:43",
+        "start_date" : "01/Aug/2024 , 13:43"
+      }
+    }
+  },
+  "securityProfiles" : {
+    "DEVICE" : [ ]
+  },
+  "services" : {
+    "gRIP" : {
+      "name" : "gRIP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "520",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "GTP" : {
+      "name" : "GTP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "2123",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2152",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "3386",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gFTP_GET" : {
+      "name" : "gFTP_GET",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "21",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "POP3" : {
+      "name" : "POP3",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "110",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "DNS" : {
+      "name" : "DNS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "53",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "53",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SMTPS" : {
+      "name" : "SMTPS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "465",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "MS-SQL" : {
+      "name" : "MS-SQL",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1433",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "1434",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "RAUDIO" : {
+      "name" : "RAUDIO",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "7070",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gOSPF" : {
+      "name" : "gOSPF",
+      "service_definitions" : [ {
+        "protocol" : "89",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gSSH" : {
+      "name" : "gSSH",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "22",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gGTP" : {
+      "name" : "gGTP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "2123",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2152",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "3386",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gDHCP" : {
+      "name" : "gDHCP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "67-68",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "VDOLIVE" : {
+      "name" : "VDOLIVE",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "7000-7010",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gTRACEROUTE" : {
+      "name" : "gTRACEROUTE",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "33434-33535",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "NNTP" : {
+      "name" : "NNTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "119",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SNMP" : {
+      "name" : "SNMP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "161-162",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "161-162",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "NONE" : {
+      "name" : "NONE",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "0",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gINFO_ADDRESS" : {
+      "name" : "gINFO_ADDRESS",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "17",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "tcp_4443" : {
+      "name" : "tcp_4443",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "4443",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gDCE-RPC" : {
+      "name" : "gDCE-RPC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "135",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "135",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gTELNET" : {
+      "name" : "gTELNET",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "23",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gHTTPS" : {
+      "name" : "gHTTPS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "443",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gPOP3S" : {
+      "name" : "gPOP3S",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "995",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "RSH" : {
+      "name" : "RSH",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "514",
+        "src_port" : "512-1023"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gUUCP" : {
+      "name" : "gUUCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "540",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "AH" : {
+      "name" : "AH",
+      "service_definitions" : [ {
+        "protocol" : "51",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SMB" : {
+      "name" : "SMB",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "445",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gWINS" : {
+      "name" : "gWINS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1512",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1512",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "QUAKE" : {
+      "name" : "QUAKE",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "26000",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "27000",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "27910",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "27960",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "UUCP" : {
+      "name" : "UUCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "540",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "GOPHER" : {
+      "name" : "GOPHER",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "70",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gINFO_REQUEST" : {
+      "name" : "gINFO_REQUEST",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "15",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gSYSLOG" : {
+      "name" : "gSYSLOG",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "514",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "RADIUS" : {
+      "name" : "RADIUS",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "1812",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1813",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gAOL" : {
+      "name" : "gAOL",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5190-5194",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gCVSPSERVER" : {
+      "name" : "gCVSPSERVER",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "2401",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2401",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "NetMeeting" : {
+      "name" : "NetMeeting",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1720",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "RTSP" : {
+      "name" : "RTSP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "554",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "7070",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "8554",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "554",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "IRC" : {
+      "name" : "IRC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "6660-6669",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "AFS3" : {
+      "name" : "AFS3",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "7000-7009",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "7000-7009",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "PC-Anywhere" : {
+      "name" : "PC-Anywhere",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5631",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "5632",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "INFO_ADDRESS" : {
+      "name" : "INFO_ADDRESS",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "17",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "WINS" : {
+      "name" : "WINS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1512",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1512",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "DCE-RPC" : {
+      "name" : "DCE-RPC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "135",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "135",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gLDAP" : {
+      "name" : "gLDAP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gTALK" : {
+      "name" : "gTALK",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "517-518",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "L2TP" : {
+      "name" : "L2TP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1701",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1701",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "FTP" : {
+      "name" : "FTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "21",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gSAMBA" : {
+      "name" : "gSAMBA",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "139",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "REXEC" : {
+      "name" : "REXEC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "512",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "IMAPS" : {
+      "name" : "IMAPS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "993",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TFTP" : {
+      "name" : "TFTP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "69",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "NTP" : {
+      "name" : "NTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "123",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "123",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "H323" : {
+      "name" : "H323",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1720",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "1503",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1719",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gRSH" : {
+      "name" : "gRSH",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "514",
+        "src_port" : "512-1023"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "ONC-RPC" : {
+      "name" : "ONC-RPC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gSMB" : {
+      "name" : "gSMB",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "445",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "SIP-MSNmessenger" : {
+      "name" : "SIP-MSNmessenger",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1863",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gMYSQL" : {
+      "name" : "gMYSQL",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "3306",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gFTP_PUT" : {
+      "name" : "gFTP_PUT",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "21",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gFTP" : {
+      "name" : "gFTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "21",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "WINFRAME" : {
+      "name" : "WINFRAME",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1494",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "2598",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "PING" : {
+      "name" : "PING",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "8",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "PPTP" : {
+      "name" : "PPTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1723",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gIRC" : {
+      "name" : "gIRC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "6660-6669",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "WAIS" : {
+      "name" : "WAIS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "210",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "RADIUS-OLD" : {
+      "name" : "RADIUS-OLD",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "1645",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1646",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "RDP" : {
+      "name" : "RDP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "3389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "IKE" : {
+      "name" : "IKE",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "500",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "4500",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ALL_UDP" : {
+      "name" : "ALL_UDP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "1-65535",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ESP" : {
+      "name" : "ESP",
+      "service_definitions" : [ {
+        "protocol" : "50",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "FTP_GET" : {
+      "name" : "FTP_GET",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "21",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gDNS" : {
+      "name" : "gDNS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "53",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "53",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gNetMeeting" : {
+      "name" : "gNetMeeting",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1720",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "SMTP" : {
+      "name" : "SMTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "25",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gSQUID" : {
+      "name" : "gSQUID",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "3128",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gSOCKS" : {
+      "name" : "gSOCKS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1080",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1080",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "IMAP" : {
+      "name" : "IMAP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "143",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gSCCP" : {
+      "name" : "gSCCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "2000",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "RLOGIN" : {
+      "name" : "RLOGIN",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "513",
+        "src_port" : "512-1023"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "LDAP_UDP" : {
+      "name" : "LDAP_UDP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gLDAP_UDP" : {
+      "name" : "gLDAP_UDP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gMS-SQL" : {
+      "name" : "gMS-SQL",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1433",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "1434",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gRAUDIO" : {
+      "name" : "gRAUDIO",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "7070",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "ALL" : {
+      "name" : "ALL",
+      "service_definitions" : [ {
+        "protocol" : "*",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "webproxy" : {
+      "name" : "webproxy",
+      "service_definitions" : [ ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gTIMESTAMP" : {
+      "name" : "gTIMESTAMP",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "13",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "tcp-9443" : {
+      "name" : "tcp-9443",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "9443",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "ALL_TCP" : {
+      "name" : "ALL_TCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1-65535",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "LDAP" : {
+      "name" : "LDAP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gALL_UDP" : {
+      "name" : "gALL_UDP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "1-65535",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gX-WINDOWS" : {
+      "name" : "gX-WINDOWS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "6000-6063",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gL2TP" : {
+      "name" : "gL2TP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1701",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1701",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gTFTP" : {
+      "name" : "gTFTP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "69",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gWAIS" : {
+      "name" : "gWAIS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "210",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "ALL_ICMP6" : {
+      "name" : "ALL_ICMP6",
+      "service_definitions" : [ ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gPING" : {
+      "name" : "gPING",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "8",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "tcp_9090" : {
+      "name" : "tcp_9090",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "9090",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "VNC" : {
+      "name" : "VNC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5900",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TALK" : {
+      "name" : "TALK",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "517-518",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "PING6" : {
+      "name" : "PING6",
+      "service_definitions" : [ ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SAMBA" : {
+      "name" : "SAMBA",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "139",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gALL" : {
+      "name" : "gALL",
+      "service_definitions" : [ {
+        "protocol" : "0",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "TIMESTAMP" : {
+      "name" : "TIMESTAMP",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "13",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "tcp_3390" : {
+      "name" : "tcp_3390",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "3390",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "NFS" : {
+      "name" : "NFS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "2049",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2049",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SCCP" : {
+      "name" : "SCCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "2000",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gH323" : {
+      "name" : "gH323",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1720",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "1503",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1719",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "Internet-Locator-Service" : {
+      "name" : "Internet-Locator-Service",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gMGCP" : {
+      "name" : "gMGCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "2428",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2427",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2727",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gHTTP" : {
+      "name" : "gHTTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "80",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gSIP-MSNmessenger" : {
+      "name" : "gSIP-MSNmessenger",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1863",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "MGCP" : {
+      "name" : "MGCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "2428",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2427",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2727",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gALL_TCP" : {
+      "name" : "gALL_TCP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1-65535",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gwebproxy" : {
+      "name" : "gwebproxy",
+      "service_definitions" : [ ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "SQUID" : {
+      "name" : "SQUID",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "3128",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gRDP" : {
+      "name" : "gRDP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "3389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gWINFRAME" : {
+      "name" : "gWINFRAME",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1494",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "2598",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "ALL_ICMP" : {
+      "name" : "ALL_ICMP",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "BGP" : {
+      "name" : "BGP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "179",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "HTTP" : {
+      "name" : "HTTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "80",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "FTP_PUT" : {
+      "name" : "FTP_PUT",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "21",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gFINGER" : {
+      "name" : "gFINGER",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "79",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gPING6" : {
+      "name" : "gPING6",
+      "service_definitions" : [ ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gIMAPS" : {
+      "name" : "gIMAPS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "993",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gPPTP" : {
+      "name" : "gPPTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1723",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "MMS" : {
+      "name" : "MMS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1755",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1024-5000",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gIKE" : {
+      "name" : "gIKE",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "500",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "4500",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gNTP" : {
+      "name" : "gNTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "123",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "123",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gALL_ICMP6" : {
+      "name" : "gALL_ICMP6",
+      "service_definitions" : [ ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gESP" : {
+      "name" : "gESP",
+      "service_definitions" : [ {
+        "protocol" : "50",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "X-WINDOWS" : {
+      "name" : "X-WINDOWS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "6000-6063",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gALL_ICMP" : {
+      "name" : "gALL_ICMP",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "SOCKS" : {
+      "name" : "SOCKS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1080",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1080",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "DHCP6" : {
+      "name" : "DHCP6",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "546",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "547",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gREXEC" : {
+      "name" : "gREXEC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "512",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "GRE" : {
+      "name" : "GRE",
+      "service_definitions" : [ {
+        "protocol" : "47",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SIP" : {
+      "name" : "SIP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5060",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "5060",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gRLOGIN" : {
+      "name" : "gRLOGIN",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "513",
+        "src_port" : "512-1023"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gSIP" : {
+      "name" : "gSIP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5060",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "5060",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gMMS" : {
+      "name" : "gMMS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "1755",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1024-5000",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gAFS3" : {
+      "name" : "gAFS3",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "7000-7009",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "7000-7009",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gBGP" : {
+      "name" : "gBGP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "179",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gAH" : {
+      "name" : "gAH",
+      "service_definitions" : [ {
+        "protocol" : "51",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gSMTPS" : {
+      "name" : "gSMTPS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "465",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gNONE" : {
+      "name" : "gNONE",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "0",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gQUAKE" : {
+      "name" : "gQUAKE",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "26000",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "27000",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "27910",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "27960",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gRTSP" : {
+      "name" : "gRTSP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "554",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "7070",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "8554",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "554",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "HTTPS" : {
+      "name" : "HTTPS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "443",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gInternet-Locator-Service" : {
+      "name" : "gInternet-Locator-Service",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "389",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gPOP3" : {
+      "name" : "gPOP3",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "110",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gGRE" : {
+      "name" : "gGRE",
+      "service_definitions" : [ {
+        "protocol" : "47",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "AOL" : {
+      "name" : "AOL",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5190-5194",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "MYSQL" : {
+      "name" : "MYSQL",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "3306",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TELNET" : {
+      "name" : "TELNET",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "23",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gRADIUS-OLD" : {
+      "name" : "gRADIUS-OLD",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "1645",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1646",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "SSH" : {
+      "name" : "SSH",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "22",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "CVSPSERVER" : {
+      "name" : "CVSPSERVER",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "2401",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2401",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gPC-Anywhere" : {
+      "name" : "gPC-Anywhere",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5631",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "5632",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "INFO_REQUEST" : {
+      "name" : "INFO_REQUEST",
+      "service_definitions" : [ {
+        "protocol" : "icmp",
+        "dst_port" : "15",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "KERBEROS" : {
+      "name" : "KERBEROS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "88",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "464",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "88",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "464",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "DHCP" : {
+      "name" : "DHCP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "67-68",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gSMTP" : {
+      "name" : "gSMTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "25",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gONC-RPC" : {
+      "name" : "gONC-RPC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gVDOLIVE" : {
+      "name" : "gVDOLIVE",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "7000-7010",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gNNTP" : {
+      "name" : "gNNTP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "119",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gVNC" : {
+      "name" : "gVNC",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "5900",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "FINGER" : {
+      "name" : "FINGER",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "79",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gIMAP" : {
+      "name" : "gIMAP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "143",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gSNMP" : {
+      "name" : "gSNMP",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "161-162",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "161-162",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "RIP" : {
+      "name" : "RIP",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "520",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "SYSLOG" : {
+      "name" : "SYSLOG",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "514",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gRADIUS" : {
+      "name" : "gRADIUS",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "1812",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "1813",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gNFS" : {
+      "name" : "gNFS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "2049",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "111",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "2049",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gGOPHER" : {
+      "name" : "gGOPHER",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "70",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gKERBEROS" : {
+      "name" : "gKERBEROS",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "88",
+        "src_port" : "*"
+      }, {
+        "protocol" : "tcp",
+        "dst_port" : "464",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "88",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "464",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gDHCP6" : {
+      "name" : "gDHCP6",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "546",
+        "src_port" : "*"
+      }, {
+        "protocol" : "udp",
+        "dst_port" : "547",
+        "src_port" : "*"
+      } ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "POP3S" : {
+      "name" : "POP3S",
+      "service_definitions" : [ {
+        "protocol" : "tcp",
+        "dst_port" : "995",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "TRACEROUTE" : {
+      "name" : "TRACEROUTE",
+      "service_definitions" : [ {
+        "protocol" : "udp",
+        "dst_port" : "33434-33535",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "OSPF" : {
+      "name" : "OSPF",
+      "service_definitions" : [ {
+        "protocol" : "89",
+        "dst_port" : "*",
+        "src_port" : "*"
+      } ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    }
+  },
+  "services_groups" : {
+    "gWindows AD" : {
+      "name" : "gWindows AD",
+      "members" : [ "gDCE-RPC", "gDNS", "gKERBEROS", "gLDAP", "gLDAP_UDP", "gSAMBA", "gSMB" ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "Email Access" : {
+      "name" : "Email Access",
+      "members" : [ "DNS", "IMAP", "IMAPS", "POP3", "POP3S", "SMTP", "SMTPS" ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "Windows AD" : {
+      "name" : "Windows AD",
+      "members" : [ "DCE-RPC", "DNS", "KERBEROS", "LDAP", "LDAP_UDP", "SAMBA", "SMB" ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "Exchange Server" : {
+      "name" : "Exchange Server",
+      "members" : [ "DCE-RPC", "DNS", "HTTPS" ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gWeb Access" : {
+      "name" : "gWeb Access",
+      "members" : [ "gDNS", "gHTTP", "gHTTPS" ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "gExchange Server" : {
+      "name" : "gExchange Server",
+      "members" : [ "gDCE-RPC", "gDNS", "gHTTPS" ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    },
+    "Web Access" : {
+      "name" : "Web Access",
+      "members" : [ "DNS", "HTTP", "HTTPS" ],
+      "object_container" : "root",
+      "additional_properties" : { }
+    },
+    "gEmail Access" : {
+      "name" : "gEmail Access",
+      "members" : [ "gDNS", "gIMAP", "gIMAPS", "gPOP3", "gPOP3S", "gSMTP", "gSMTPS" ],
+      "object_container" : "shared",
+      "additional_properties" : { }
+    }
+  },
+  "tunnels" : { },
+  "zones" : {
+    "fortilink" : {
+      "name" : "fortilink",
+      "interfaces" : [ "fortilink" ],
+      "description" : "added by creating adom"
+    },
+    "NET35" : {
+      "name" : "NET35",
+      "interfaces" : [ "NET35" ]
+    },
+    "WAN" : {
+      "name" : "WAN",
+      "interfaces" : [ "port2" ]
+    },
+    "DMZ-Stage" : {
+      "name" : "DMZ-Stage",
+      "interfaces" : [ "VLAN1144" ]
+    }
+  }
+}

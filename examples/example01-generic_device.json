@@ -1,0 +1,352 @@
+{
+  "config_type": "POLICY_BASED",
+  "device": {
+    "name": "Francesca",
+    "hostname": "",
+    "policy": "new_policy, Firewall Template 1"
+  },
+  "services": {
+    "Address Mask Reply (Any Code)": {
+      "name": "Address Mask Reply (Any Code)",
+      "service_definitions": [
+        {
+          "protocol": "icmp",
+          "src_port": "18",
+          "dst_port": "0"
+        }
+      ],
+      "type": "ICMP",
+      "comment": "\"Address mask reply\" messages with any code."
+    },
+    "Comodo-OCSP": {
+      "name": "Comodo-OCSP",
+      "service_definitions": [
+        {
+          "protocol": "tcp",
+          "src_port": "80",
+          "dst_port": "0"
+        }
+      ],
+      "type": "APPLICATION",
+      "comment": "Comodo Online Certificate Status service usage detected"
+    }
+  },
+  "services_groups": {
+    "Ping": {
+      "name": "Ping",
+      "members": [
+        "Echo Request (Any Code)"
+      ]
+    },
+    "H.323": {
+      "name": "H.323",
+      "members": [
+        "H.323 (Call Signaling)",
+        "T.120"
+      ]
+    }
+  },
+  "hosts": {
+    "ALL-SYSTEMS.MCAST.NET": {
+      "name": "ALL-SYSTEMS.MCAST.NET",
+      "type": "IP_ADDRESS",
+      "ips": [
+        "224.0.0.1/32"
+      ]
+    },
+    "DHCP Broadcast Destination": {
+      "name": "DHCP Broadcast Destination",
+      "type": "IP_ADDRESS",
+      "ips": [
+        "255.255.255.255/32"
+      ]
+    },
+    "Microsoft Lync Online Servers 19": {
+      "name": "Microsoft Lync Online Servers 19",
+      "type": "IP_RANGE",
+      "ips": [
+        "66.119.158.0-66.119.158.127"
+      ]
+    }
+  },
+  "hosts_groups": {
+    "Microsoft Ex-Fed servers": {
+      "name": "Microsoft Ex-Fed servers",
+      "members": [],
+      "type": "GROUP"
+    },
+    "Microsoft Exchange Online Protection servers": {
+      "name": "Microsoft Exchange Online Protection servers",
+      "members": [
+        "Microsoft Exchange Online Protection Servers 1",
+        "Microsoft Exchange Online Protection Servers 10",
+        "Microsoft Exchange Online Protection Servers 11",
+        "Microsoft Exchange Online Protection Servers 12",
+        "Microsoft Exchange Online Protection Servers 13",
+        "Microsoft Exchange Online Protection Servers 14",
+        "Microsoft Exchange Online Protection Servers 15",
+        "Microsoft Exchange Online Protection Servers 16",
+        "Microsoft Exchange Online Protection Servers 17",
+        "Microsoft Exchange Online Protection Servers 18",
+        "Microsoft Exchange Online Protection Servers 19",
+        "Microsoft Exchange Online Protection Servers 2",
+        "Microsoft Exchange Online Protection Servers 20",
+        "Microsoft Exchange Online Protection Servers 21",
+        "Microsoft Exchange Online Protection Servers 22",
+        "Microsoft Exchange Online Protection Servers 23",
+        "Microsoft Exchange Online Protection Servers 24",
+        "Microsoft Exchange Online Protection Servers 25",
+        "Microsoft Exchange Online Protection Servers 26",
+        "Microsoft Exchange Online Protection Servers 27",
+        "Microsoft Exchange Online Protection Servers 28",
+        "Microsoft Exchange Online Protection Servers 29",
+        "Microsoft Exchange Online Protection Servers 3",
+        "Microsoft Exchange Online Protection Servers 30",
+        "Microsoft Exchange Online Protection Servers 31",
+        "Microsoft Exchange Online Protection Servers 32",
+        "Microsoft Exchange Online Protection Servers 33",
+        "Microsoft Exchange Online Protection Servers 34",
+        "Microsoft Exchange Online Protection Servers 35",
+        "Microsoft Exchange Online Protection Servers 36",
+        "Microsoft Exchange Online Protection Servers 37",
+        "Microsoft Exchange Online Protection Servers 38",
+        "Microsoft Exchange Online Protection Servers 4",
+        "Microsoft Exchange Online Protection Servers 5",
+        "Microsoft Exchange Online Protection Servers 6",
+        "Microsoft Exchange Online Protection Servers 7",
+        "Microsoft Exchange Online Protection Servers 8",
+        "Microsoft Exchange Online Protection Servers 9"
+      ],
+      "type": "GROUP"
+    }
+  },
+  "hosts_v6": {
+    "All Routers (Interface-Local)": {
+      "name": "All Routers (Interface-Local)",
+      "type": "IP_ADDRESS",
+      "ips": [
+        "FF01::1"
+      ]
+    },
+    "All Routers (Link-Local)": {
+      "name": "All Routers (Link-Local)",
+      "type": "IP_ADDRESS",
+      "ips": [
+        "FF02::2"
+      ]
+    }
+  },
+  "policies": {
+    "160": {
+      "rule_id": "160",
+      "rule_name": "160.0",
+      "rule_display_name": "160.0",
+      "rule_num": "1",
+      "line_number": "0",
+      "policy": "Firewall Template 1",
+      "type": "Template",
+      "enable": "enabled",
+      "src": [
+        "ANY"
+      ],
+      "dst": [
+        "ANY",
+        "DNS (UDP)"
+      ],
+      "action": "continue",
+      "additional_properties": {
+        "scope": "before"
+      }
+    },
+    "161": {
+      "rule_id": "161",
+      "rule_name": "161.0",
+      "rule_display_name": "161.0",
+      "rule_num": "2",
+      "line_number": "0",
+      "policy": "Firewall Template 1",
+      "type": "Template",
+      "enable": "enabled",
+      "src": [
+        "NOT Loopback network"
+      ],
+      "dst": [
+        "Loopback network"
+      ],
+      "service": [
+        "ANY"
+      ],
+      "action": "discard",
+      "log": "1",
+      "additional_properties": {
+        "logging": "Stored",
+        "scope": "before"
+      }
+    }
+  },
+  "nat_rules": {
+    "167": {
+      "rule_id": "167",
+      "rule_name": "167.0",
+      "rule_display_name": "167.0",
+      "rule_num": "1",
+      "line_number": "0",
+      "policy": "Firewall Template 1",
+      "type": "Template",
+      "action": "allow",
+      "enable": "enabled",
+      "src": [
+        "ANY"
+      ],
+      "dst": [
+        "DHCP Broadcast Destination",
+        "Localhost"
+      ],
+      "service": [
+        "ANY"
+      ],
+      "src_nat_type": "STATIC",
+      "dst_nat_type": "STATIC"
+    }
+  },
+  "policies_v6": {
+    "169": {
+      "rule_id": "169",
+      "rule_name": "169.0",
+      "rule_display_name": "169.0",
+      "rule_num": "1",
+      "line_number": "0",
+      "policy": "Firewall Template 1",
+      "type": "Template",
+      "enable": "enabled",
+      "src": [
+        "ANY"
+      ],
+      "dst": [
+        "ANY"
+      ],
+      "service": [
+        "DNS (UDP)"
+      ],
+      "action": "continue",
+      "additional_properties": {
+        "scope": "after"
+      }
+    },
+    "170": {
+      "rule_id": "170",
+      "rule_name": "170.0",
+      "rule_display_name": "170.0",
+      "rule_num": "2",
+      "line_number": "0",
+      "policy": "Firewall Template 1",
+      "type": "Template",
+      "enable": "enabled",
+      "src": [
+        "ANY"
+      ],
+      "dst": [
+        "ANY"
+      ],
+      "service": [
+        "IPv6 Neighbor Advertisement",
+        "IPv6 Neighbor Solicitation",
+        "IPv6 Redirect",
+        "IPv6 Router Advertisement",
+        "IPv6 Router Solicitation"
+      ],
+      "action": "allow",
+      "additional_properties": {
+        "scope": "after"
+      }
+    }
+  },
+  "interfaces": {
+    "NDI-0-192.168.7.24": {
+      "name": "NDI-0-192.168.7.24",
+      "zone": "DMZ",
+      "hwdevice": "0",
+      "ips": [
+        "192.168.7.24/24"
+      ]
+    },
+    "NDI-1-9.9.9.8": {
+      "name": "NDI-1-9.9.9.8",
+      "zone": "Internal",
+      "hwdevice": "1",
+      "ips": [
+        "9.9.9.8/24"
+      ]
+    },
+    "NDI-2-5.5.5.4": {
+      "name": "NDI-2-5.5.5.4",
+      "zone": "Internal",
+      "hwdevice": "2",
+      "ips": [
+        "5.5.5.4/24"
+      ]
+    }
+  },
+  "device_interfaces": {
+    "NDI-0-192.168.7.24": {
+      "name": "NDI-0-192.168.7.24",
+      "ips": [
+        "192.168.7.24"
+      ]
+    },
+    "NDI-1-9.9.9.8": {
+      "name": "NDI-1-9.9.9.8",
+      "ips": [
+        "9.9.9.8"
+      ]
+    },
+    "NDI-2-5.5.5.4": {
+      "name": "NDI-2-5.5.5.4",
+      "ips": [
+        "5.5.5.4"
+      ]
+    }
+  },
+  "zones": {
+    "DMZ": {
+      "name": "DMZ",
+      "interfaces": [
+        "NDI-0-192.168.7.24"
+      ],
+      "description": "Interfaces connected to DMZ networks"
+    },
+    "External": {
+      "name": "External",
+      "interfaces": [],
+      "description": "Interfaces connected to the Internet or other external networks"
+    },
+    "Guest": {
+      "name": "Guest",
+      "interfaces": [],
+      "description": "Interfaces connected to guest networks"
+    },
+    "Internal": {
+      "name": "Internal",
+      "interfaces": [
+        "NDI-1-9.9.9.8",
+        "NDI-2-5.5.5.4"
+      ],
+      "description": "Interfaces connected to internal networks"
+    },
+    "Node-internal": {
+      "name": "Node-internal",
+      "interfaces": [],
+      "description": "Firewall nodes themselves"
+    }
+  },
+  "routes": {
+    "1": {
+      "id": "1",
+      "route": "0.0.0.0",
+      "route_mask": "0.0.0.0",
+      "gateway": "192.168.7.254",
+      "interface": "0",
+      "origin": "internal"
+    }
+  }
+}

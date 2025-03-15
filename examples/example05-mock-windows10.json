@@ -1,0 +1,176 @@
+{
+  "devicePackage": {
+    "vendorName": "Microsoft",
+    "deviceName": "Windows10Firewall",
+    "version": "1.0",
+    "releaseDate": "2025-03-14",
+    "author": "CustomUser",
+    "deviceType": "FIREWALL"
+  },
+  "zones": [
+    {
+      "name": "Public",
+      "interfaceNames": ["Public Network"]
+    },
+    {
+      "name": "Private",
+      "interfaceNames": ["Private Network"]
+    },
+    {
+      "name": "Domain",
+      "interfaceNames": ["Domain Network"]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Ethernet",
+      "ipAddresses": ["192.168.1.100/24"],
+      "zoneName": "Private"
+    },
+    {
+      "name": "WiFi",
+      "ipAddresses": ["10.0.0.15/24"],
+      "zoneName": "Public"
+    }
+  ],
+  "policies": [
+    {
+      "name": "Windows Firewall Policy",
+      "rules": [
+        {
+          "name": "Allow RDP",
+          "action": "ACCEPT",
+          "enabled": true,
+          "sourceZones": ["Private"],
+          "destinationZones": ["ANY"],
+          "services": [
+            {
+              "name": "RDP",
+              "protocol": "TCP",
+              "destinationPorts": ["3389"]
+            }
+          ]
+        },
+        {
+          "name": "Allow Web Browsing",
+          "action": "ACCEPT",
+          "enabled": true,
+          "sourceZones": ["ANY"],
+          "destinationZones": ["ANY"],
+          "services": [
+            {
+              "name": "HTTP",
+              "protocol": "TCP",
+              "destinationPorts": ["80"]
+            },
+            {
+              "name": "HTTPS",
+              "protocol": "TCP",
+              "destinationPorts": ["443"]
+            }
+          ]
+        },
+        {
+          "name": "Block Incoming SMB",
+          "action": "DROP",
+          "enabled": true,
+          "sourceZones": ["Public"],
+          "destinationZones": ["Private"],
+          "services": [
+            {
+              "name": "SMB",
+              "protocol": "TCP",
+              "destinationPorts": ["445"]
+            }
+          ]
+        },
+        {
+          "name": "Allow File Sharing for Private Network",
+          "action": "ACCEPT",
+          "enabled": true,
+          "sourceZones": ["Private"],
+          "destinationZones": ["Private"],
+          "services": [
+            {
+              "name": "SMB",
+              "protocol": "TCP",
+              "destinationPorts": ["445"]
+            },
+            {
+              "name": "NetBIOS",
+              "protocol": "UDP",
+              "destinationPorts": ["137", "138"]
+            },
+            {
+              "name": "NetBIOS-TCP",
+              "protocol": "TCP",
+              "destinationPorts": ["139"]
+            }
+          ]
+        },
+        {
+          "name": "Default Deny",
+          "action": "DROP",
+          "enabled": true,
+          "sourceZones": ["ANY"],
+          "destinationZones": ["ANY"],
+          "services": [
+            {
+              "name": "ANY",
+              "protocol": "ANY"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "name": "RDP",
+      "protocol": "TCP",
+      "destinationPorts": ["3389"]
+    },
+    {
+      "name": "HTTP",
+      "protocol": "TCP",
+      "destinationPorts": ["80"]
+    },
+    {
+      "name": "HTTPS",
+      "protocol": "TCP",
+      "destinationPorts": ["443"]
+    },
+    {
+      "name": "SMB",
+      "protocol": "TCP",
+      "destinationPorts": ["445"]
+    },
+    {
+      "name": "NetBIOS",
+      "protocol": "UDP",
+      "destinationPorts": ["137", "138"]
+    },
+    {
+      "name": "NetBIOS-TCP",
+      "protocol": "TCP",
+      "destinationPorts": ["139"]
+    }
+  ],
+  "objects": [
+    {
+      "name": "LocalSubnet",
+      "type": "NETWORK",
+      "members": ["192.168.1.0/24"]
+    },
+    {
+      "name": "WifiNetwork",
+      "type": "NETWORK",
+      "members": ["10.0.0.0/24"]
+    },
+    {
+      "name": "LocalServer",
+      "type": "HOST",
+      "members": ["192.168.1.5"]
+    }
+  ]
+}

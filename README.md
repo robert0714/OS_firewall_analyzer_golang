@@ -23,3 +23,16 @@ go install -v github.com/haya14busa/goplay/cmd/goplay@v1.0.0
   * type `Ctrl + Shift + D`
   * press button `Launch`
   * press button `F5`
+
+# Test
+```bash
+go mod init firewall_rules_converter
+go mod tidy  
+go run .
+```
+# Build
+```bash
+go mod init firewall_rules_converter
+go mod tidy  
+go build
+```

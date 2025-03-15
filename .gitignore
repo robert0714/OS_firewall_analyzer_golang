@@ -122,3 +122,10 @@ chapter11/vault/vaultd
 chapter5/twittervotes/setup.sh
 go.mod
 go.sum
+*.algosec
+firewall-rules-converter.dist
+firewall-rules-converter.onefile-build
+*.exe
+*.bin
+.vagrant
+.idea

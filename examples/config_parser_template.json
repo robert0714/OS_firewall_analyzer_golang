@@ -1,0 +1,739 @@
+{
+	# Version of JSON template
+	"version" : "1.3",
+		
+	####################
+	
+	# Type of rules structure
+	"config_type" : "<POLICY_BASED|ZONE_BASED|INTERFACE_BASED|CLOUD_BASED>",
+	# Example
+	# "config_type" : "POLICY_BASED",
+
+	####################
+
+	# Definition of the device
+	"device" : {
+        "@type" : "<Device | CloudDeviceInfo>",
+        "name" : "<device name>",
+		"major_version" : "<device major version (first number before first dot)>",
+		"version" : "<device version>",
+		"hostname" : "<device host name>", # OPTIONAL, for syslog identifiers
+		"mgmt_hostname" : "<managment host name>", # OPTIONAL, for syslog identifiers
+		"minor_version" : "<device minor version (last number of whole version)>",
+		"mode" : "<layer2/3 etc.>", #OPTIONAL
+		"serial" : "<serial>", # OPTIONAL, for syslog identifiers
+		"mgmt_serial" : "<managment serial>", # OPTIONAL, for syslog identifiers
+		"local_target" : [ # OPTIONAL
+			<list of targets identifiers - The rule target will have to match the identifiers in order to >],
+		"secondary_hostname" : "<secondary hostname>", # OPTIONAL
+		"secondary_cluster_name" : [ # OPTIONAL
+			<list of secondary cluster names>
+		],
+		"secondary_cluster_hostname" : [ # OPTIONAL
+			<list of secondary cluster hostnames>
+		], 
+		"protected_cloud_host_ips" : [ # OPTIONAL
+			<list of cloud based devices IPs>
+		],
+		"domain" : "<domain>", # OPTIONAL, for syslog identifiers
+		"policy" : "<policy name>", # OPTIONAL
+		"is_layer2" : <1/0> # (OPTIONAL)
+	},
+	# Example
+	#"device" : {
+	#	"@type" : "Device",
+	#	"name" : "i-5d5522bc",
+	#	"version" : "6.0.4",
+    #	"major_version" : "6",
+    #	"minor_version" : "0",
+    #   "local_target" : ["vdom","root"],
+	#	"policy" : "launch-wizard-1, Test1",	    	    	
+	#},
+
+	####################	
+
+	# List of user-defined network hosts (not including groups)
+	"hosts" : {
+		"<host name>" : {
+			"name": "<host name>",
+			"comment" : "<host comment, if there is one>", # (OPTIONAL)
+			"ips" : [
+				<list of host ips>
+			],
+			"is_negate" : "<true|false>", # (OPTIONAL)
+			"type": "<PREDEFINED|ANY|IP_ADDRESS|IP_RANGE|DOMAIN|SUBNET|INTERNAL|IPS_LIST>"
+		}
+	},
+	# Examples
+	#"hosts" : {
+	#	"959234629017/sg-d9b4edbc" : {
+	#      "name" : "959234629017/sg-d9b4edbc",
+	#      "comment" : "Yarin",
+	#      "ips" : [ "172.31.50.24", "172.31.7.212", "172.31.33.73", "172.31.33.70" ],
+	#      "type" : "IPS_LIST",
+	#      "is_negate" : false
+	#    },
+	#	"Test NSX" : {
+	#      "name" : "Test NSX",
+	#      "ips" : [ "192.168.9.1-192.168.9.24" ],	
+	#      "type" : "IP_RANGE"	
+	#    },
+	#},
+
+	####################
+
+	# List of hosts groups
+	"hosts_groups" : {
+		"<host group name>" : {
+			"name" : "<host group name>",
+			"members" : [
+				<list of group members (from hosts hash or from hosts_groups hash)>
+			],
+			"is_negate" : "<true|false>", # (OPTIONAL)
+			"zone" : "<zone name, that host group should be intersected with (if there is zone, host group's type will be INTERNAL)>", # (OPTIONAL)
+			"type" : "<GROUP|INTERNAL>"
+		}
+	},
+	# Example
+	#"hosts_groups" : {		
+	#	"Microsoft Exchange Online Protection servers" : {
+	#		"name" : "Microsoft Exchange Online Protection servers",
+	#		"members" : [
+	#			"Microsoft Exchange Online Protection Servers 1",
+	#			"Microsoft Exchange Online Protection Servers 10",
+	#			"Microsoft Exchange Online Protection Servers 11",				
+	#			"Microsoft Exchange Online Protection Servers 9"
+	#		],
+	#		"type" : "GROUP"
+	#	}
+	#},
+
+	####################
+
+	# List of logical interfaces
+	"interfaces" : {
+		"<interface name>" : {
+			"name" : "<interface logical name>",
+			"enable" : "<enabled|disabled>", # (OPTIONAL)
+			"ips" : [
+				<list of interface's ips in format of: 'ip address/cidr' OR "layer2">
+			],
+			"hwdevice" : "<interface physical name>", # (OPTIONAL)
+			"zone" : "<interface's zone>", # (OPTIONAL)
+			"description" : "<description>", # (OPTIONAL)
+			"rules_groups" : [ # (OPTIONAL)
+				"<list of rules groups names that applied to this interface - for INTERFACE_BASED configuration only!>"
+			]
+		}
+	},
+	# Example
+	# "interfaces" : {
+	#	"NDI-0-192.168.7.24" : {
+	#		"name" : "NDI-0-192.168.7.24",
+	#		"zone" : "DMZ",??? OPTIONAL?
+	#		"hwdevice" : "ethernet1.1",
+	#		"ips" : [
+	#			"192.168.7.24/24"
+	#		]
+	#	},
+	#	"SG_APP_8" : {
+	#      "name" : "SG_APP_8",
+	#      "enable" : "enabled",
+	#      "ips" : [ "layer2" ]
+	#    }
+	#},
+
+	####################
+
+	# List of user-defined services (not including groups)
+	"services" : {
+		"<service name>" : {
+			"name": "<service name>",
+			"service_definitions" : [
+				<list of service definitions in the following format:>
+				{
+					"protocol" : "<protocol name: tcp|udp|icmp|any|protocol number>",
+					"src_port" : "<source port number/source port range (if there is no source port, or range is any, it will be *)/ICMP type>", # (OPTIONAL)
+					"dst_port" : "<destination port number/destination port range (if range is any, it will be *)>"
+				}
+			],
+			"type" : "<ANY|TCP|UDP|ICMP|TCP_UDP|INTERNAL>"
+			
+		}
+	},
+	# Examples
+	# "services" : {
+	#	"Traceroute Status (Successfully Forwarded)" : {
+	#		"name" : "Traceroute Status (Successfully Forwarded)",
+	#		"service_definitions" : [
+	#			{
+	#				"protocol" : "icmp",
+	#				"src_port" : "30",
+	#				"dst_port" : "0"
+	#			}
+	#		],
+	#		"type" : "ICMP",
+	#		"comment" : "\"Traceroute: outbound packet successfully forwarded\" status messages."
+	#	},
+	#	"AOL" : {
+	#		"name" : "AOL",
+	#		"service_definitions" : [
+	#			{
+	#				"protocol" : "tcp",
+	#				"src_port" : "*",
+	#				"dst_port" : "5190"
+	#			}
+	#		],
+	#		"type" : "TCP",
+	#		"comment" : "AOL Instant Messenger (AIM)."
+	#	},
+	# },
+
+	####################
+
+	# List of services groups
+	"services_groups" : {
+		"<service group name>" : {
+			"name" : "<service group name>",
+			"members" : [
+				<list of group members (from services hash or from services_groups hash)>
+			],
+			"type" : "<GROUP|INTERNAL>"
+		}
+	},
+	# Example
+	# "services_groups" : {
+	#	"H.323" : {
+	#			"name" : "H.323",
+	#			"members" : [
+	#				"H.323 (Call Signaling)",
+	#				"T.120"
+	#			]
+	#	},
+	# },
+
+	####################
+
+	# List of rules
+	"policies" : {
+		"<rule name>" : {
+			"rule_name" : "<rule's name as appears in the configuration>",
+			"rule_display_name" : "<display name>",
+			"rule_id" : "<rule's id - unique identifier of the rule, can be the rule name if it is unique>",
+			"line_number" : "<line number of the rule in configuration file - mandatory and must be unique, can be equal to rule_num.>",
+			"rule_num" : "<rules number (to save order of rules)>",
+			"src" : [
+				<list of rule's sources>
+			],
+			"src_zone" : [ # (OPTIONAL)
+				<list of source zones>
+			],
+			"dst" : [
+				<list of rule's destinations>
+			],
+			"dst_zone" : [ #(OPTIONAL)
+				<list of destination zones>
+			],
+			"service" : [
+				<list of rule's services>
+			],
+			"src_nat" : [ # (OPTIONAL)
+				<list of source NAT hosts/addresses>
+			],
+			"src_nat_type" : "<source NAT type - one of the values: STATIC|DYNAMIC>", # (OPTIONAL)
+			"dst_nat" : [ # (OPTIONAL)
+				<list of destination NAT hosts/addresses>
+			],
+			"target" : [ # (OPTIONAL)
+				<list of targets - The devices that the rule installed on>
+			],
+			"dst_nat_type" : "<destination NAT type - one of the values: STATIC|DYNAMIC>", # (OPTIONAL)
+			"object_nat_source" : <true|false - specify if source contains NAT objects (from nat_objects list)>, # (OPTIONAL)
+			"object_nat_destination" : <true|false - specify if destination contains NAT objects (from nat_objects list)>, # (OPTIONAL)
+			"action" : "<allow|deny>",
+			"direction": "inbound|outbound", # (OPTIONAL)
+			"comments" : "<rule's comment>",  # (OPTIONAL)
+			"rule_grp" : "<group that the rule belongs to>",  # (OPTIONAL)
+			"src_negate" : <0/1>, # (OPTIONAL)
+			"dst_negate" : <0/1>, # (OPTIONAL)
+			"nat" : "<enabled|disabled - specify if NAT (any type) should be applied to the rule>", # (OPTIONAL)
+			"global_nat" : "<enabled|disabled - specify if global NAT should be applied to rule>", # (OPTIONAL)
+			"map_source_to_interface" : <true|false - specify if source should be mapped to interface subnet>, # (OPTIONAL)
+			"log" : <0/1>,
+			"users" : [ # (OPTIONAL)
+				<list of users for rule matching>
+			],
+			"applications" : [ # (OPTIONAL)
+				<list of applications for rule matching>
+			],
+			"vlans" : [ # (OPTIONAL)
+				<list of vlans for rule matching>
+			],
+			"urls" : [ # (OPTIONAL)
+				<list of urls for rule matching>
+			],
+			"enable" : "<enabled|disabled>", # (OPTIONAL)
+			"schedule" : "<schedule name (from schedules list)>", # (OPTIONAL)
+			"bi-directional" : <0/1>, # Relevant for static NAT (e.g. MIP in NetScreen) (OPTIONAL)
+			"policy" : "<policy name>", # (OPTIONAL)
+			"additional_properties" : { # (OPTIONAL)
+				<additional properties in hash format>
+			}
+		}
+	},
+	# Examples
+	# "policies" : {
+	#	"233" : {
+	#		"rule_id" : "233",
+	#		"rule_name" : "233.12",
+	#		"rule_display_name" : "233.12",
+	#		"rule_num" : "4",
+	#		"line_number" : "4",
+	#       "target" : ["vdom"],
+	#		"policy" : "new_policy",
+	#		"type" : "Standard",???
+	#		"enable" : "disabled",
+	#		"src" : [
+	#			"Allowed SSH Local Sources"
+	#		],
+	#		"dst" : [
+	#			"1.1.1.2"
+	#		],
+	#		"dst_nat_type" : "STATIC",
+   	#       "dst_nat" : [
+	#       	"9.9.9.2"
+	#       ],
+	#		"service" : [
+	#			"000FreeProxy"
+	#		],
+	#		"action" : "allow",
+	#		"additional_properties" : {
+	#			"logging" : "Alert",
+	#			"scope" : "middle"
+	#		}
+	#	},
+	#	"규칙2" : {
+	#      "service" : [ "icmp/*" ],
+	#      "direction" : "outbound",
+	#      "action" : "allow",
+	#      "enable" : "enabled",
+	#      "log" : 0,
+	#      "rule_id" : "ce2ead998e1591cb9cc8bd70a21f7f6e",
+	#      "rule_name" : "ce2ead998e1591cb9cc8bd70a21f7f6e",
+	#      "rule_display_name" : "규칙2",
+	#      "line_number" : 15,
+	#      "rule_num" : 15,
+	#      "rule_grp" : "Test1",
+	#      "src" : [ "Host" ],
+	#      "dst" : [ "80.1.1.88/32" ],
+	#      "src_negate" : 0,
+	#      "dst_negate" : 0,	      
+	#      "bi-directional" : 0	      
+    #	},
+    # },
+
+    ####################
+
+    # List of rules groups (required for rule sections view), OPTIONAL
+	"rules_groups" : {
+		"<rules group unique identifier>" : {
+			"id" : "<group unique identifier (can be name if name is unique>",
+			"name": "<rules group name>",
+			"enable" : "<enabled|disabled>",
+			"rule_display_name" : "<group display name>", # (OPTIONAL)
+			"comments" : "<rules group comment, if there is one>" # (OPTIONAL)
+		}
+	},
+	# Example
+	#"rules_groups" : {
+	#	"launch-wizard-1" : {	      
+	#	   "id" : "launch-wizard-1", 
+	#      "name" : "launch-wizard-1",
+	#      "enable" : "enabled",
+	#      "comments" : "launch-wizard-1 created 2014-08-25T16:10:45.093+03:00",
+	#      "rule_display_name" : "launch-wizard-1",
+	#    }
+	# },
+
+	####################
+
+	#List of NAT rules
+	"nat_rules" : {
+		"<rule name>" : {
+			"rule_name" : "<rule's name as appears in the configuration (without canonization)>",
+			"rule_id" : "<rule's id - unique identifier of the rule, can be the rule name if it is unique>",
+			"rule_display_name" : "<display name>",
+			"line_number" : "<line number of the rule in configuration file>",
+			"rule_num" : "<rules number (to save order of rules)>",
+			"src" : [
+				<list of rule's sources>
+			],        
+			"src_zone" : [ #(OPTIONAL)
+				<list of source zones>
+			],
+			"dst" : [
+				<list of rule's destinations>
+			],
+			"dst_zone" : [ #(OPTIONAL)
+				<list of destination zones>
+			],
+			"service" : [
+				<list of rule's services>
+			
+			],
+			"src_nat" : [
+				<list of source NAT hosts/addresses>
+			],
+			"src_nat_type" : "<source NAT type - one of the values: STATIC|DYNAMIC>",
+			"dst_nat" : [
+				<list of destination NAT hosts/addresses>
+			],
+			"dst_nat_type" : "<destination NAT type - one of the values: STATIC|DYNAMIC>",
+			"action" : "<allow|deny>",
+			"direction": "inbound/outbound", # (OPTIONAL)   
+			"comments" : "<rule's comment>", # (OPTIONAL)
+			"src_negate" : <0/1>, # (OPTIONAL)
+			"dst_negate" : <0/1>, # (OPTIONAL)
+			"log" : <0/1>,
+			"enable" : "<enabled|disabled>", # (OPTIONAL)  
+			"schedule" : "<schedule name (from schedules list)>", # (OPTIONAL)       
+			"bi-directional" : <0/1>, # (OPTIONAL) Relevant for static NAT (e.g. MIP in NetScreen)
+			"additional_properties": {
+				<additional properties in hash format>
+			}
+		}
+	},
+	# Example
+	# "nat_rules" : {                
+    #            "189" : {
+    #                    "rule_id" : "189",
+    #                    "rule_name" : "189.10",
+    #                    "rule_display_name" : "189.10",
+    #                    "rule_num" : "2",
+    #                    "line_number" : "808",
+    #                    "policy" : "AnyAny",
+    #                    "type" : "Standard",
+    #                    "action" : "allow",
+    #                    "enable" : "enabled",
+    #                    "src" : [
+    #                           "5.5.5.1"
+    #                    ],
+    #                    "dst" : [
+    #                            "9.9.9.1"
+    #                    ],
+    #                    "service" : [
+    #                            "ANY"
+    #                    ],
+    #                    "src_nat_type" : "STATIC",
+    #                    "dst_nat_type" : "STATIC",
+    #                    "dst_nat" : [
+    #                            "9.9.9.2"
+    #                    ]
+    #            },
+
+    ####################
+
+   	# List of global NAT rules - this NAT will be applied as source NAT to matching security rules (from policies list)
+	"global_nat_rules" : {
+		"<global NAT rule identifier>" : {
+			"id" : "<global NAT rule identifier>",
+			"rule_number" : "<priority of global NAT is according to this field>",
+			"origin_ips" : [
+				<list of post-NAT ip addresses/hosts>
+			],
+			"mapped_ips" : [
+				<list of pre-NAT ip addresses/hosts>
+			],
+			"nat_type" : <STATIC|DYNAMIC>,
+			"enable" : "<enabled|disabled - default value is enabled>"
+		}
+	},
+#	Example
+#	"global_nat_rules" : {
+#		"NAT rule 1" : {
+#			"id" : "NAT rule 1",
+#			"rule_number" : "1",
+#			"origin_ips" : [
+#				"10.20.1.1",
+#				"10.20.1.2"
+#			],
+#			"mapped_ips" : [
+#				"10.10.1.1",
+#				"10.10.1.2",
+#			],
+#			"nat_type" : STATIC,
+#			"enable" : "enabled"
+#		}
+#	},
+
+	####################
+
+	# List of NAT objects - these objects can be used as source/destination of security rules (policies), in order to apply NAT to source/destination
+	"nat_objects" : {
+		"<NAT object identifier>" : {
+			"id" : "<NAT object identifier>",
+			"origin_ips" : [
+				<list of post-NAT ip addresses>
+			],
+			"mapped_ips" : [
+				<list of pre-NAT ip addresses>
+			],
+			"nat_type" : <STATIC|DYNAMIC>,
+			"comment" : "<NAT object's comment, if there is one >" # (OPTIONAL)
+		}
+	},
+#	Example
+#	"nat_objects" : {
+#		"VIP test" : {
+#			"id" : "VIP test",
+#			"origin_ips" : [
+#				"10.20.30.1",
+#				"10.20.30.2"
+#			],
+#			"mapped_ips" : [
+#				"10.10.30.1",
+#				"10.10.30.2",
+#			],
+#			"nat_type" : DYNAMIC,
+#			"comment" : "VIP for mapping hosts"
+#		}
+#	},
+	
+	####################
+	
+	#List of NAT objects groups
+	"nat_objects_groups" : {
+		"<NAT object group identifier>" : {
+			"name" : "<NAT object group identifier>",
+			"members" : [
+				<list of NAT objects from nat_objects/nat_objects_groups list>
+			],
+			"nat_type" : <STATIC|DYNAMIC>
+		}
+	},	
+#	Example
+#	"nat_objects_groups" : {
+#		"VIP group 3" : {
+#			"name" : "VIP group 3",
+#			"members" : [
+#				"VIP1",
+#				"VIP2",
+#				"VIP3"
+#			],
+#			"nat_type" : STATIC
+#		}
+#	},
+	
+	####################
+	
+	#List of NAT pools
+	"nat_pools" : {
+		"<NAT object group identifier>" : {
+			"name" : "<NAT object group identifier>",
+			"ips" : [
+				<list of NAT IP addresses/ranges>
+			],
+			"nat_type" : <STATIC|DYNAMIC>,
+			"comment" : "<comment, if there is one>", # (OPTIONAL)
+			"type": "<NAT_POOL>"
+		}
+	},
+#	Example
+#	"nat_pools" : {
+#		"test pool" : {
+#			"name" : "test pool",
+#			"ips" : [
+#				"1.0.0.0-1.255.255.255",
+#				"10.0.0.1"
+#			],
+#			"nat_type" : DYNAMIC,
+#			"type": "NAT_POOL"
+#		}
+#	},
+
+	####################
+
+	# List of application (NOT SUPPORTED YET)
+	"applications": {
+		"<application name>": {
+			"name": "<application name>",
+			"description": "<application description>",
+			"risk": <risk (number)>,
+            "services": [
+                {
+                    "protocol": "<application service protocol name>",
+                    "port": "<application service port>"
+                }
+            ]
+        }
+    },
+#	Example
+#	"gatherplace-base" : {
+#	"name" : "gatherplace-base",
+#		"description" : "A web conferencing service for online training, webinars, meetings, distance education and remote support.",
+#		"risk" : "3",
+#		"services" : [
+#			{
+#				"protocol" : "tcp",
+#				"port" : "443"
+#			},
+#			{
+#				"protocol" : "udp",
+#				"port" : "4569"
+#			}
+#		]
+#	},
+
+    ####################
+	
+    # List of applications groups (NOT SUPPORTED YET)
+	"applications_groups" : {
+		"<application group name>" : {
+			"name" : "<application group name>",
+			"members" : [
+				<list of group members (from application hash or from applications_groups hash)>
+			]
+		}
+	},
+#	Example
+#	"yunpan360" : {
+#		"name" : "yunpan360",
+#		"members" : [
+#			"yunpan360-base",
+#			"yunpan360-file-transfer"
+#		]
+#	},
+
+	####################
+	
+	# List of zones
+	"zones" : {
+		"<zone name>" : {
+			"name" : "<zone name>",
+			"interfaces" : [
+				<list of zone interfaces>
+			],
+			"description" : "<zone's description>"
+		}
+	},
+	# Example
+	# "zones" : {
+	#	"DMZ" : {
+	#		"name" : "DMZ",
+	#		"interfaces" : [
+	#			"NDI-0-192.168.7.24"
+	#		],
+	#		"description" : "Interfaces connected to DMZ networks"
+	#	},
+	# },
+
+	####################
+
+	# List of rules zones. keys are zones that appear in configuration as source zone, for each source zone there are lists of rules per destination zone
+	"from_to_zone" : {
+		"<zone that appears as source zone in at least one rule>" : {
+			"<zone that appears as destination zone with this source zone>" : [
+				<list of rules that has these source and destination zones>
+			]
+		}
+	},
+#	Example
+#	"from_to_zone" : {
+#		"DMZ" : {
+#			"untrust" : [
+#				"rule40",
+#				"test_afa"
+#			],
+#			"trust" : [
+#				"rule233",
+#				"test_delete",
+#				"hila_test3"
+#			],
+#			"internal" : [
+#				"sanity_test_israel",
+#				"rule12",
+#				"rule32",
+#				"rule30",
+#				"rule16"
+#        	]
+#	},
+	
+	####################
+
+   	# List of zones groups (NOT SUPPORTED YET)
+	"zones_groups" : {
+		"<zone group name>" : {
+			"name" : "<zone group name>",
+			"members" : [
+				<list of group members (from zones hash or from zones_groups hash)>
+			]
+		}
+	},
+	# Example
+	# "zones_groups" : {
+	#	"zone_group_1" : {
+	#		"name" : "zone_group_1",
+	#		"members" : [
+	#			"DMZ",
+	#			"INTERNAL"
+	#		]
+	#	}
+	# },
+
+	####################
+
+	# List of routes
+	"routes" : {
+		"<route's id>" : {
+			"id" : <route's id>,
+			"interface_name" : "<logical name>",
+			"route_mask" : "<cidr of the route>",
+			"gateway" : "<gateway (ip address)>",
+			"interface" : "<physical name>",
+			"route" : "<ip address of the route>"
+		}
+	},
+	# Example
+	# "routes" : {
+	#	"1" : {
+	#		"id" : "1",
+	#		"route" : "172.31.33.70",
+	#		"route_mask" : "255.255.255.255",
+	#		"gateway" : "172.31.7.254",
+	#		"interface" : "external"
+	#	}
+	# },
+
+	####################
+	
+	#Mapping of VDOMs canonized names to VDOMs original names (OPTIONAL)
+	"vdoms" : {
+		"<VDOM canonized name>" : "<VDOM original name>"
+	}
+	Example
+	"vdoms" : {
+		"test_VDOM" : "test VDOM"
+	}
+	
+	####################	
+	
+	# List of schedulers, will be more detailed in future
+	"schedules" : {
+		"<schedule name>" : {
+			"name" : "<schedule name>",
+			"start_date" : "<start date in format of: 'ddMMMyyyy, HHmm'>",
+			"end_date" : "<end date in format of: 'ddMMMyyyy, HHmm'>",
+			"additional_properties": {
+				<additional properties in hash format>
+			}
+		}
+	}
+	# Example
+	# "schedules" : {
+	#	"<schedule name>" : {
+	#		"name" : "Schedule1",
+	#		"start_date" : "22112011, 1800",
+	#		"end_date" : "24112011, 2200",			
+	#	}
+	# }	
+}

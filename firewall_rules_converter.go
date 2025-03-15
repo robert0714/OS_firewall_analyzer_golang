@@ -33,6 +33,7 @@ type WinRule struct {
 	Action          int         `json:"Action"`
 	Protocol        string      `json:"Protocol"`
 	LocalPort       string      `json:"LocalPort"`
+	RemotePort      string      `json:"RemotePort"`
 	RemoteAddress   string      `json:"RemoteAddress"`
 	LocalAddress    interface{} `json:"LocalAddress"` // 可能是 string 或 object
 }
@@ -65,6 +66,27 @@ func parseLocalAddress(raw interface{}) string {
 	}
 	return ""
 }
+func convertToRule(winRules []WinRule) ([]Rule, error) {
+	var rules []Rule
+	for _, winRule := range winRules {
+		rule := Rule{
+			RuleID:          strconv.Itoa(winRule.RuleID),
+			RuleName:        winRule.RuleName,
+			RuleDisplayName: winRule.RuleDisplayName,
+			Chain:           "INPUT",
+			Table:           "filter",
+			Protocol:        winRule.Protocol,
+			SrcAddress:      winRule.RemoteAddress,
+			DstAddress:      parseLocalAddress(winRule.LocalAddress),
+			SrcPort:         winRule.RemotePort,
+			DstPort:         winRule.LocalPort,
+			Action:          strconv.Itoa(winRule.Action),
+		}
+		rules = append(rules, rule)
+	}
+
+	return rules, nil
+}
 
 func getWindowsFirewallRules() ([]Rule, error) {
 	psScript := "get_windows_firewall_rules.ps1"
@@ -74,30 +96,39 @@ func getWindowsFirewallRules() ([]Rule, error) {
 		return nil, fmt.Errorf("error getting Windows firewall rules: %v", err)
 	}
 
+	var winRules []WinRule
+	if err := json.Unmarshal(output, &winRules); err != nil {
+		// fmt.Println(string(output))
+		return nil, fmt.Errorf("error parsing mock JSON file: %v", err)
+	}
+
 	var rules []Rule
-	if err := json.Unmarshal(output, &rules); err != nil {
-		return nil, fmt.Errorf("error parsing Windows firewall rules: %v", err)
+	rules, err = convertToRule(winRules)
+	if err != nil {
+		return nil, fmt.Errorf("error converting rules: %v", err)
 	}
 
 	return rules, nil
 }
-func getWindowsFirewallRulesMock() ([]WinRule, error) {
-	jsonFile := "get_windows_firewall_rules_mock-v2.json"
-	fileContent, err := os.ReadFile(jsonFile)
+func getWindowsFirewallRulesMock() ([]Rule, error) {
+	jsonFile := "get_windows_firewall_rules_mock-v3.json"
+	fileContent, err := ioutil.ReadFile(jsonFile)
 	if err != nil {
 		return nil, fmt.Errorf("error reading mock JSON file: %v", err)
 	}
-	var rawRules []WinRule
-	if err := json.Unmarshal(fileContent, &rawRules); err != nil {
+
+	var winRules []WinRule
+	if err := json.Unmarshal(fileContent, &winRules); err != nil {
 		return nil, fmt.Errorf("error parsing mock JSON file: %v", err)
 	}
 
-	// 轉換 LocalAddress
-	for i := range rawRules {
-		rawRules[i].LocalAddress = parseLocalAddress(rawRules[i].LocalAddress)
+	var rules []Rule
+	rules, err = convertToRule(winRules)
+	if err != nil {
+		return nil, fmt.Errorf("error converting rules: %v", err)
 	}
 
-	return rawRules, nil
+	return rules, nil
 }
 
 func getLinuxFirewallRules() ([]Rule, error) {
@@ -301,10 +332,9 @@ func main() {
 	var err error
 	if osType == "windows" {
 		fmt.Println("Detecting Windows system, getting firewall rules...")
+		// rules, err = getWindowsFirewallRulesMock()
+		rules, err = getWindowsFirewallRules()
 
-		getWindowsFirewallRulesMock()
-
-		//rules, err = getWindowsFirewallRules()
 	} else if osType == "linux" {
 		fmt.Println("Detecting Linux system, getting firewall rules...")
 		rules, err = getLinuxFirewallRules()
@@ -330,7 +360,7 @@ func main() {
 		fmt.Println("Error getting hostname:", err)
 		os.Exit(1)
 	}
-	// ...existing code...
+
 	outputFile := fmt.Sprintf("%s_firewall_rules.algosec", hostname)
 	file, err := json.MarshalIndent(algosecData, "", "  ")
 	if err != nil {
