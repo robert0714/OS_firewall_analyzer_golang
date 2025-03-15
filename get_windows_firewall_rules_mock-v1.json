@@ -1,0 +1,13 @@
+{
+         "Name":"{40DFEE06-2A03-46ED-8548-9B2FB0896823}",
+         "DisplayName":"sdo",
+         "Description":"Test sdo",
+         "Direction":1,
+         "Action":2,
+         "Protocol":"UDP",
+         "LocalPort":"1812",
+         "RemotePort":"Any",
+         "RemoteAddress":"192.168.60.0/255.255.255.0",
+         "LocalAddress":"192.168.59.0/255.255.255.0",
+         "rule_id":1
+    }

@@ -1,0 +1,47 @@
+[
+    {
+         "Name":"{40DFEE06-2A03-46ED-8548-9B2FB0896823}",
+         "DisplayName":"sdo",
+         "Description":"Test sdo",
+         "Direction":1,
+         "Action":2,
+         "Protocol":"UDP",
+         "LocalPort":"1812",
+         "RemotePort":"Any",
+         "RemoteAddress":"192.168.60.0/255.255.255.0",
+         "LocalAddress":"192.168.59.0/255.255.255.0",
+         "rule_id":1
+    },
+    {
+        "Name":  "{509CBF3C-966D-4CD0-A826-B02BA16739A2}",
+        "DisplayName":  "sdo1",
+        "Description":  "sdo",
+        "Direction":  1,
+        "Action":  2,
+        "Protocol":  "TCP",
+        "LocalPort":  "80",
+        "RemotePort":  "Any",
+        "RemoteAddress":  "Any",
+        "LocalAddress":  "192.168.0.12",
+        "rule_id":  2
+    },
+    {
+        "Name":  "{E2198C6F-4A8E-42A3-922B-D880EF97A104}",
+        "DisplayName":  "sdo2",
+        "Description":  "sdo",
+        "Direction":  1,
+        "Action":  2,
+        "Protocol":  "TCP",
+        "LocalPort":  "80",
+        "RemotePort":  "Any",
+        "RemoteAddress":  "Any",
+        "LocalAddress":  {
+                             "value":  [
+                                           "192.168.0.12",
+                                           "192.168.0.13"
+                                       ],
+                             "Count":  2
+                         },
+        "rule_id":  3
+    }
+]

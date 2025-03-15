@@ -1,0 +1,28 @@
+[
+    {
+        "Name":  "WiFiDirect-KM-Driver-In-TCP",
+        "DisplayName":  "WFD Driver-only (TCP-In)",
+        "Description":  "Inbound rule for drivers to communicate over WFD (TCP-In)",
+        "Direction":  1,
+        "Action":  2,
+        "Protocol":  "TCP",
+        "LocalPort":  "Any",
+        "RemotePort":  "Any",
+        "RemoteAddress":  "Any",
+        "LocalAddress":  "Any",
+        "rule_id":  1
+    },
+    {
+        "Name":  "WiFiDirect-KM-Driver-Out-TCP",
+        "DisplayName":  "WFD Driver-only (TCP-Out)",
+        "Description":  "Inbound rule for drivers to communicate over WFD (TCP-Out)",
+        "Direction":  2,
+        "Action":  2,
+        "Protocol":  "TCP",
+        "LocalPort":  "Any",
+        "RemotePort":  "Any",
+        "RemoteAddress":  "Any",
+        "LocalAddress":  "Any",
+        "rule_id":  2
+    }
+]
