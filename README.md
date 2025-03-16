@@ -26,6 +26,7 @@ go install -v github.com/haya14busa/goplay/cmd/goplay@v1.0.0
 
 # Test
 ```bash
+go get -u github.com/stretchr/testify
 go mod init firewall_rules_converter
 go mod tidy  
 go run .

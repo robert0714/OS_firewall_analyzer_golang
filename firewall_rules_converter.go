@@ -3,12 +3,13 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"runtime"
 	"strconv"
 	"strings"
+
+	"github.com/shirou/gopsutil/host"
 )
 
 type Rule struct {
@@ -23,6 +24,7 @@ type Rule struct {
 	SrcPort         string `json:"src_port"`
 	DstPort         string `json:"dst_port"`
 	Action          string `json:"action"`
+	Comments        string `json:"Description"`
 }
 type WinRule struct {
 	RuleID          int         `json:"rule_id"`
@@ -66,22 +68,47 @@ func parseLocalAddress(raw interface{}) string {
 	}
 	return ""
 }
-
-func getWindowsFirewallRules() ([]Rule, error) {
+func getWindowsFirewallRulesConsoleMock() ([]byte, error) {
+	jsonFile := "get_windows_firewall_rules_mock-v2.json"
+	fileContent, err := os.ReadFile(jsonFile)
+	if err != nil {
+		return nil, fmt.Errorf("error reading mock JSON file: %v", err)
+	}
+	return fileContent, nil
+}
+func getWindowsFirewallRulesConsole() ([]byte, error) {
 	psScript := "get_windows_firewall_rules.ps1"
 	cmd := exec.Command("powershell", "-ExecutionPolicy", "Bypass", "-File", psScript)
 	output, err := cmd.Output()
 	if err != nil {
 		return nil, fmt.Errorf("error getting Windows firewall rules: %v", err)
 	}
-
+	return output, nil
+}
+func getWindowsFirewallRules() ([]Rule, error) {
+	output, err := getWindowsFirewallRulesConsole()
+	//output, err := getWindowsFirewallRulesConsoleMock()
 	var rules []Rule
 	rules, err = convertToRuleFromWinPowerShellJson(output, err)
 	if err != nil {
 		return nil, fmt.Errorf("error converting rules: %v", err)
 	}
-
 	return rules, nil
+}
+
+// 解析 Action，確保支援不同格式
+func parseAction(raw interface{}) string {
+	switch v := raw.(type) {
+	case string:
+		return v
+	case int:
+		if v == 2 {
+			return "allow"
+		} else {
+			return "deny"
+		}
+	}
+	return ""
 }
 func convertToRuleFromWinPowerShellJson(fileContent []byte, err error) ([]Rule, error) {
 	var winRules []WinRule
@@ -118,24 +145,10 @@ func convertToRuleFromWinPowerShellJson(fileContent []byte, err error) ([]Rule, 
 			DstAddress:      parseLocalAddress(winRule.LocalAddress),
 			SrcPort:         winRule.RemotePort,
 			DstPort:         winRule.LocalPort,
-			Action:          strconv.Itoa(winRule.Action),
+			Action:          parseAction(winRule.Action),
+			Comments:        winRule.Description,
 		}
 		rules = append(rules, rule)
-	}
-
-	return rules, nil
-}
-func getWindowsFirewallRulesMock() ([]Rule, error) {
-	jsonFile := "get_windows_firewall_rules_mock-v3.json"
-	fileContent, err := ioutil.ReadFile(jsonFile)
-	if err != nil {
-		return nil, fmt.Errorf("error reading mock JSON file: %v", err)
-	}
-
-	var rules []Rule
-	rules, err = convertToRuleFromWinPowerShellJson(fileContent, err)
-	if err != nil {
-		return nil, fmt.Errorf("error converting rules: %v", err)
 	}
 
 	return rules, nil
@@ -216,16 +229,46 @@ func parseIptablesRules(iptablesOutput string) []Rule {
 
 	return rules
 }
-
-func createAlgoSecJSON(rules []Rule, osType string) AlgoSecData {
+func getSystemInfo() map[string]string {
+	hostInfo, _ := host.Info()
 	hostname, _ := os.Hostname()
+	version := strings.Split(hostInfo.PlatformVersion, " ")[0]
+
+	var majorVersion, minorVersion string
+
+	if strings.Contains(version, ".") {
+		parts := strings.Split(version, ".")
+		majorVersion = parts[0]
+		minorVersion = parts[len(parts)-1]
+	} else {
+		majorVersion = version
+		minorVersion = "0"
+	}
+
 	systemInfo := map[string]string{
 		"name":          hostname,
-		"version":       runtime.GOOS,
-		"major_version": runtime.GOOS,
-		"minor_version": runtime.GOARCH,
+		"version":       version,
+		"major_version": majorVersion,
+		"minor_version": minorVersion,
 		"hostname":      hostname,
 	}
+
+	return systemInfo
+}
+func contains(hosts map[string]interface{}, addr string) bool {
+	for _, host := range hosts {
+		if ips, ok := host.([]string); ok {
+			for _, ip := range ips {
+				if ip == addr {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+func createAlgoSecJSON(rules []Rule, osType string) AlgoSecData {
+	systemInfo := getSystemInfo()
 
 	algosecData := AlgoSecData{
 		Version:        "1.3",
@@ -255,23 +298,33 @@ func createAlgoSecJSON(rules []Rule, osType string) AlgoSecData {
 
 		// Add hosts
 		for _, addr := range srcAddresses {
-			if addr != "Any" {
-				hostName := fmt.Sprintf("ip_%s", strings.ReplaceAll(addr, "/", "_"))
+			if addr != "Any" && !contains(hosts, addr) {
+				hostName := "ip_" + strings.ReplaceAll(addr, "/", "_")
+				hostType := "IP_ADDRESS"
+				if strings.Contains(addr, "/") {
+					hostType = "SUBNET"
+				}
+
 				hosts[hostName] = map[string]interface{}{
 					"name": hostName,
 					"ips":  []string{addr},
-					"type": "IP_ADDRESS",
+					"type": hostType,
 				}
 			}
 		}
 
 		for _, addr := range dstAddresses {
-			if addr != "Any" {
-				hostName := fmt.Sprintf("ip_%s", strings.ReplaceAll(addr, "/", "_"))
+			if addr != "Any" && !contains(hosts, addr) {
+				hostName := "ip_" + strings.ReplaceAll(addr, "/", "_")
+				hostType := "IP_ADDRESS"
+				if strings.Contains(addr, "/") {
+					hostType = "SUBNET"
+				}
+
 				hosts[hostName] = map[string]interface{}{
 					"name": hostName,
 					"ips":  []string{addr},
-					"type": "IP_ADDRESS",
+					"type": hostType,
 				}
 			}
 		}
@@ -310,7 +363,7 @@ func createAlgoSecJSON(rules []Rule, osType string) AlgoSecData {
 			"service":           []string{serviceName},
 			"action":            action,
 			"direction":         direction,
-			"comments":          fmt.Sprintf("Chain: %s | Table: %s", rule.Chain, rule.Table),
+			"comments":          rule.Comments,
 			"log":               0,
 			"enable":            "enabled",
 		}
@@ -342,7 +395,6 @@ func main() {
 	var err error
 	if osType == "windows" {
 		fmt.Println("Detecting Windows system, getting firewall rules...")
-		// rules, err = getWindowsFirewallRulesMock()
 		rules, err = getWindowsFirewallRules()
 
 	} else if osType == "linux" {
@@ -378,7 +430,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err := ioutil.WriteFile(outputFile, file, 0644); err != nil {
+	if err := os.WriteFile(outputFile, file, 0644); err != nil {
 		fmt.Println("Error writing to file:", err)
 		os.Exit(1)
 	}
