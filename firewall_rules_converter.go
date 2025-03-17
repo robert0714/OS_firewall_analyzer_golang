@@ -63,7 +63,7 @@ func parseLocalAddress(raw interface{}) string {
 			for _, addr := range val {
 				addresses = append(addresses, fmt.Sprintf("%v", addr))
 			}
-			return fmt.Sprintf("[%s]", strconv.Quote(fmt.Sprint(addresses)))
+			return strings.Join(addresses, ",")
 		}
 	}
 	return ""
@@ -112,7 +112,7 @@ func parseAction(raw interface{}) string {
 }
 func convertToRuleFromWinPowerShellJson(fileContent []byte, err error) ([]Rule, error) {
 	if len(fileContent) == 0 {
-	    return nil, fmt.Errorf("error getting Windows firewall rules: %v", err)
+		return nil, fmt.Errorf("error getting Windows firewall rules: %v", err)
 	}
 	var winRules []WinRule
 	var raw json.RawMessage
@@ -144,7 +144,7 @@ func convertToRuleFromWinPowerShellJson(fileContent []byte, err error) ([]Rule, 
 			Chain:           "INPUT",
 			Table:           "filter",
 			Protocol:        winRule.Protocol,
-			SrcAddress:      winRule.RemoteAddress,
+			SrcAddress:      parseLocalAddress(winRule.RemoteAddress),
 			DstAddress:      parseLocalAddress(winRule.LocalAddress),
 			SrcPort:         winRule.RemotePort,
 			DstPort:         winRule.LocalPort,

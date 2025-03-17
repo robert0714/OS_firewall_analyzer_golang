@@ -8,17 +8,30 @@ import (
 )
 
 func TestParseLocalAddress(t *testing.T) {
+	// 定義測試案例
 	tests := []struct {
+		name     string
 		input    interface{}
 		expected string
 	}{
-		{"192.168.0.1", "192.168.0.1"},
-		{map[string]interface{}{"value": []interface{}{"192.168.0.1", "192.168.0.2"}}, `["192.168.0.1" "192.168.0.2"]`},
+		{
+			name:     "單一IP地址",
+			input:    "192.168.0.1",
+			expected: "192.168.0.1",
+		},
+		{
+			name:     "多個IP地址",
+			input:    map[string]interface{}{"value": []interface{}{"192.168.0.1", "192.168.0.2"}},
+			expected: `192.168.0.1,192.168.0.2`,
+		},
 	}
 
+	// 遍歷測試案例並執行測試
 	for _, test := range tests {
-		result := parseLocalAddress(test.input)
-		assert.Equal(t, test.expected, result)
+		t.Run(test.name, func(t *testing.T) {
+			result := parseLocalAddress(test.input)
+			assert.Equal(t, test.expected, result)
+		})
 	}
 }
 
