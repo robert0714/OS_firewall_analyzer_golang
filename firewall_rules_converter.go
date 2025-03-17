@@ -111,6 +111,9 @@ func parseAction(raw interface{}) string {
 	return ""
 }
 func convertToRuleFromWinPowerShellJson(fileContent []byte, err error) ([]Rule, error) {
+	if len(fileContent) == 0 {
+	    return nil, fmt.Errorf("error getting Windows firewall rules: %v", err)
+	}
 	var winRules []WinRule
 	var raw json.RawMessage
 	if err := json.Unmarshal(fileContent, &raw); err != nil {
