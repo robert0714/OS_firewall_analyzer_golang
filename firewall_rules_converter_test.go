@@ -76,3 +76,62 @@ func TestCreateAlgoSecJSON(t *testing.T) {
 	assert.NotEmpty(t, algosecData.Services)
 	assert.NotEmpty(t, algosecData.Policies)
 }
+
+func TestGetWindowsFirewallRules(t *testing.T) {
+	rules, err := getWindowsFirewallRules()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, rules)
+}
+
+func TestGetLinuxFirewallRules(t *testing.T) {
+	rules, err := getLinuxFirewallRules()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, rules)
+}
+
+func TestParseIptablesRules(t *testing.T) {
+	iptablesOutput := `
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+`
+	rules := parseIptablesRules(iptablesOutput)
+	assert.NotEmpty(t, rules)
+	assert.Equal(t, 2, len(rules))
+	assert.Equal(t, "22", rules[0].DstPort)
+	assert.Equal(t, "80", rules[1].DstPort)
+}
+
+func TestParseAction(t *testing.T) {
+	assert.Equal(t, "allow", parseAction(2))
+	assert.Equal(t, "deny", parseAction(1))
+	assert.Equal(t, "allow", parseAction("allow"))
+	assert.Equal(t, "deny", parseAction("deny"))
+}
+
+func TestGetSystemInfo(t *testing.T) {
+	systemInfo := getSystemInfo()
+	assert.NotEmpty(t, systemInfo["name"])
+	assert.NotEmpty(t, systemInfo["version"])
+	assert.NotEmpty(t, systemInfo["major_version"])
+	assert.NotEmpty(t, systemInfo["minor_version"])
+	assert.NotEmpty(t, systemInfo["hostname"])
+}
+
+func TestContains(t *testing.T) {
+	hosts := map[string]interface{}{
+		"host1": []string{"192.168.0.1"},
+		"host2": []string{"192.168.0.2"},
+	}
+	assert.True(t, contains(hosts, "192.168.0.1"))
+	assert.False(t, contains(hosts, "192.168.0.3"))
+}
+
+func TestFormatAddresses(t *testing.T) {
+	addresses := []string{"192.168.0.1", "192.168.0.2"}
+	formatted := formatAddresses(addresses)
+	assert.Equal(t, []string{"ip_192.168.0.1", "ip_192.168.0.2"}, formatted)
+}
